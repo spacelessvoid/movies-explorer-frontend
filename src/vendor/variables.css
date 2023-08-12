@@ -1,0 +1,6 @@
+:root {
+	--clr-primary: hsla(0, 0%, 13%, 1);
+	--clr-secondary: hsla(0, 0%, 100%, 1);
+	--clr-alternative: hsla(0, 0%, 19%, 1);
+	--clr-accent: hsla(147, 69%, 55%, 1);
+}

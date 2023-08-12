@@ -1,0 +1,24 @@
+.hero {
+	background-color: hsla(198, 81%, 14%, 1);
+	padding-bottom: 40px;
+}
+
+.hero__background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 484px;
+	background-image: url(../../images/hero-logo.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hero__title {
+	max-width: 730px;
+	padding-inline: 10px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 1.16;
+	letter-spacing: -2px;
+}

@@ -1,0 +1,102 @@
+
+
+.about {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 100px 70px;
+}
+
+.about__title {
+  margin: 0 0 70px;
+  padding: 0 0 23px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: #DADADA 1px solid;
+}
+
+.about__content {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  grid-template-rows: repeat(3, auto) 1fr;
+}
+
+.about__name {
+  margin: 0 0 18px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.about__profession {
+  margin: 0 0 26px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+.about__bio {
+  max-width: 600px;
+  margin: 0;
+}
+
+.about__link {
+  align-self: end;
+  color: var(--clr-secondary);
+  text-decoration: none;
+  transition: all .5s;
+}
+
+.about__link:hover {
+  color: color-mix(in srgb, var(--clr-secondary) 70%, transparent);
+}
+
+.about__photo {
+  min-height: 330px;
+  background-image: url(../../images/img_funeral.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  grid-area: 1 / 2 / 5 / 3;
+  background-color: rebeccapurple;
+}
+
+.portfolio {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 70px 125px;
+}
+
+.portfolio__title {
+  margin: 0 0 50px;
+  color: #8B8B8B;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.11;
+}
+
+.portfolio__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.portfolio__list-item {
+  padding: 20px 0;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.67;
+  letter-spacing: -1.2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__list-item:not(:last-of-type) {
+  border-bottom: #424242 1px solid;
+}
+
+.portfolio__link {
+  text-decoration: none;
+  color: var(--clr-secondary);
+}

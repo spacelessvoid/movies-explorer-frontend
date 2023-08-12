@@ -1,0 +1,43 @@
+.header {
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 18px 70px;
+	display: flex;
+	align-items: center;
+}
+
+.header__logo {
+	margin-right: 45px;
+}
+
+.header__user {
+	margin-left: auto;
+}
+
+.header__link {
+	margin-right: 15px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.38;
+	color: var(--clr-secondary);
+	text-decoration: none;
+	transition: all .5s;
+}
+
+.header__link:hover {
+	color: color-mix(in srgb, var(--clr-secondary) 70%, transparent);
+}
+
+.header__button {
+	display: inline-block;
+	margin-left: 15px;
+	padding: 8px 20px;
+	background-color: var(--clr-accent);
+	color: #000;
+	border-radius: 3px;
+}
+
+.header__button:hover {
+	color: color-mix(in srgb, #000 80%, transparent);
+	background-color: color-mix(in srgb, var(--clr-accent) 80%, transparent);
+}
