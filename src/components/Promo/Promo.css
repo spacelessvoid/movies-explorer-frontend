@@ -1,6 +1,7 @@
 .hero {
 	background-color: hsla(198, 81%, 14%, 1);
-	padding-bottom: 40px;
+	padding: 74px 0 40px;
+	margin-top: -74px;
 }
 
 .hero__background {
