@@ -1,6 +1,6 @@
 import WelcomeContent from "../WelcomeContent/WelcomeContent";
 import WelcomeInput from "../WelcomeInput/WelcomeInput";
-import * as path from "../../utils/paths";
+import { login } from "../../utils/paths";
 
 function Register() {
   return (
@@ -9,7 +9,7 @@ function Register() {
       buttonText={"Зарегистрироваться"}
       locationElse={"Уже зарегистрированы?"}
       locationLinkText={"Войти"}
-      locationLink={path.login}
+      locationLink={login}
     >
       <WelcomeInput type={"text"} labelText={"Имя"} />
       <WelcomeInput type={"email"} labelText={"E-mail"} />

@@ -1,10 +1,10 @@
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import usePath from "../../hooks/usePath";
-import * as path from "../../utils/paths";
+import { saved } from "../../utils/paths";
 
 function MoviesCardList({ movies }) {
-  const isPathSavedMovies = usePath(path.saved);
+  const isPathSavedMovies = usePath(saved);
 
   const moviesList = movies.map((movie, i) => (
     <MoviesCard key={movie.id} movie={movie} isPathSavedMovies={isPathSavedMovies} />
