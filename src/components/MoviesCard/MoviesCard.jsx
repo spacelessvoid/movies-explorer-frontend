@@ -1,9 +1,10 @@
 import "./MoviesCard.css";
 import { useState } from "react";
-import usePath from "../../hooks/usePath";
-import * as path from "../../utils/paths";
 
-function MoviesCard({ movie: { nameRU: name, duration, owner } }) {
+function MoviesCard({
+  movie: { nameRU: name, duration, owner },
+  isPathSavedMovies,
+}) {
   //TODO For testing, remove after
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -16,8 +17,6 @@ function MoviesCard({ movie: { nameRU: name, duration, owner } }) {
 
   //TODO Should be in parent component
   // const isFavorite = owner.some();
-
-  const isPathSavedMovies = usePath(path.saved);
 
   const cardButtonClassName = isPathSavedMovies
     ? `card__btn card__del-btn`

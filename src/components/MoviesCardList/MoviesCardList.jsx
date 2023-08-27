@@ -7,7 +7,7 @@ function MoviesCardList({ movies }) {
   const isPathSavedMovies = usePath(path.saved);
 
   const moviesList = movies.map((movie, i) => (
-    <MoviesCard key={movie.id} movie={movie} />
+    <MoviesCard key={movie.id} movie={movie} isPathSavedMovies={isPathSavedMovies} />
   ));
 
   return (

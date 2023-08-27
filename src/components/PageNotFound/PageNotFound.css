@@ -1,0 +1,40 @@
+.pnf {
+	min-height: calc(100vh - 154px);
+	min-height: calc(100dvh - 154px);
+	padding: 77px 30px 0;
+	line-height: normal;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pnf__title {
+	margin: 0;
+	text-align: center;
+	font-size: 140px;
+	font-weight: 400;
+}
+
+.pnf__text {
+	margin: 0;
+	text-align: center;
+	font-size: 16px;
+}
+
+.pnf__footer {
+	padding-bottom: 60px;
+	line-height: normal;
+}
+
+.pnf__link {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: hsl(217, 89%, 61%);
+	transition: color .5s;
+}
+
+.pnf__link:hover {
+	color: hsl(217, 89%, 61%, .8);
+}

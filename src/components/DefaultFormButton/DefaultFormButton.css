@@ -1,0 +1,19 @@
+.form__button {
+	margin: auto 0 8px;
+	padding: 13px 15px 15px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: normal;
+	color: var(--clr-secondary);
+	background-color: hsl(229, 89%, 58%);
+	transition: color .5s, background-color .5s;
+}
+
+.form__button:hover {
+	color: hsl(0, 0%, 100%, .8);
+	background-color: hsl(229, 89%, 58%, .8);
+}
