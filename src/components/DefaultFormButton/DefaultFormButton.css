@@ -17,3 +17,9 @@
 	color: hsl(0, 0%, 100%, .8);
 	background-color: hsl(229, 89%, 58%, .8);
 }
+
+@media screen and (max-width: 420px) {
+	.form__button {
+		font-size: 12px;
+	}
+}

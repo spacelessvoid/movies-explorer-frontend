@@ -9,9 +9,11 @@ function WelcomeInput({ type, labelText, value, onChange }) {
       <input
         className="welcome__input"
         type={type}
+        name={type}
         id={type}
         value={value}
         onChange={onChange}
+        required
       />
     </>
   );

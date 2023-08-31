@@ -23,3 +23,13 @@
 	line-height: 1.16;
 	letter-spacing: -2px;
 }
+
+@media screen and (max-width: 800px) {
+	.hero {
+		min-height: calc(100vh - 74px - 40px);
+	}
+
+	.hero__background {
+		min-height: calc(100vh - 74px - 40px);
+	}
+}

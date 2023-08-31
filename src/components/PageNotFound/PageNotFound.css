@@ -1,6 +1,7 @@
 .pnf {
-	min-height: calc(100vh - 154px);
-	min-height: calc(100dvh - 154px);
+	box-sizing: border-box;
+	min-height: calc(100vh - 90px);
+	min-height: calc(100dvh - 90px);
 	padding: 77px 30px 0;
 	line-height: normal;
 	display: flex;
@@ -10,7 +11,7 @@
 }
 
 .pnf__title {
-	margin: 0;
+	margin: 10px 0;
 	text-align: center;
 	font-size: 140px;
 	font-weight: 400;
@@ -23,7 +24,8 @@
 }
 
 .pnf__footer {
-	padding-bottom: 60px;
+	min-height: 70px;
+	margin: 20px 0 0;
 	line-height: normal;
 }
 
@@ -37,4 +39,15 @@
 
 .pnf__link:hover {
 	color: hsl(217, 89%, 61%, .8);
+}
+
+@media screen and (max-width: 420px) {
+	.pnf__title {
+		font-size: 80px;
+	}
+
+	.pnf__text,
+	.pnf__link {
+		font-size: 12px;
+	}
 }

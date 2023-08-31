@@ -1,5 +1,5 @@
 export const movies = "/movies",
-  saved = "/movies/saved",
+  saved = "/saved-movies",
   profile = "/profile",
   registration = "/sign-up",
   login = "/sign-in";

@@ -33,3 +33,32 @@
 .welcome__link:hover {
 	color: hsl(217, 89%, 61%, .8);
 }
+
+@media screen and (max-width: 420px) {
+	.welcome {
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding-block: 0;
+	}
+
+	.welcome__content {
+		min-height: calc(100vh - 56px - 30px);
+		padding-block: 56px 30px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.welcome__logo {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.welcome__title {
+		margin-block: 50px 70px;
+		text-align: center;
+	}
+
+	.welcome__text {
+		font-size: 12px;
+	}
+}

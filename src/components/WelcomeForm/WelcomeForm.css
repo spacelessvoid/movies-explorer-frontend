@@ -1,5 +1,5 @@
 .welcome__form {
-	min-height: 370px;
+	min-height: 376px;
 	max-width: 396px;
 	display: flex;
 	flex-direction: column;
@@ -14,4 +14,11 @@
 
 .welcome__error-text_visible {
 	display: block;
+}
+
+@media screen and (max-width: 420px) {
+	.welcome__form {
+		min-height: auto;
+		flex-grow: 1;
+	}
 }

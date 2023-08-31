@@ -11,31 +11,15 @@ function Header({ isLoggedIn }) {
     setIsOpen(!isOpen);
   };
 
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header className="header">
       <img src={logo} alt="Logo" className="header__logo" />
       {isLoggedIn ? (
-        <nav className="header__user">
-          <NavLink
-            to={movies}
-            className={({ isActive }) =>
-              isActive ? "header__link header__link_active" : "header__link"
-            }
-          >
-            Фильмы
-          </NavLink>
-          <NavLink
-            to={saved}
-            className={({ isActive }) =>
-              isActive ? "header__link header__link_active" : "header__link"
-            }
-          >
-            Сохранённые фильмы
-          </NavLink>
-          <NavLink to={profile} className="header__profile-btn">
-            <span>Аккаунт</span>
-            <span></span>
-          </NavLink>
+        <>
           <label className="hamburger-menu" data-open={isOpen}>
             <input
               type="checkbox"
@@ -43,7 +27,46 @@ function Header({ isLoggedIn }) {
               onChange={handleMenuClick}
             />
           </label>
-        </nav>
+          <nav className="header__user">
+            <NavLink
+              onClick={handleCloseMenu}
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "header__hidden header__link header__link_active"
+                  : "header__hidden header__link"
+              }
+            >
+              Главная
+            </NavLink>
+            <NavLink
+              onClick={handleCloseMenu}
+              to={movies}
+              className={({ isActive }) =>
+                isActive ? "header__link header__link_active" : "header__link"
+              }
+            >
+              Фильмы
+            </NavLink>
+            <NavLink
+              onClick={handleCloseMenu}
+              to={saved}
+              className={({ isActive }) =>
+                isActive ? "header__link header__link_active" : "header__link"
+              }
+            >
+              Сохранённые фильмы
+            </NavLink>
+            <NavLink
+              onClick={handleCloseMenu}
+              to={profile}
+              className="header__profile-btn"
+            >
+              <span>Аккаунт</span>
+              <span></span>
+            </NavLink>
+          </nav>
+        </>
       ) : (
         <nav className="header__welcome">
           <NavLink to={registration} className="header__link">

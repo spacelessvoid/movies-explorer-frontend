@@ -3,7 +3,7 @@ import "./AboutMe.css";
 function AboutMe() {
   return (
     <section className="about" id="about">
-      <h2 className="about__title">Студент</h2>
+      <h2 className="about__title section-title">Студент</h2>
       <div className="about__content">
         <p className="about__name">Алексей</p>
         <p className="about__profession">Фронтенд-разработчик, 36 лет</p>

@@ -23,7 +23,7 @@
 	background-color: transparent;
 	color: hsl(0, 0%, 55%);
 	font-size: 13px;
-	line-height: 18px;
+	line-height: 1.38;
 }
 
 .search__input:focus {
@@ -101,4 +101,23 @@
 
 .search__checkbox+label:active:after {
 	width: 20px;
+}
+
+@media screen and (max-width: 800px) {
+	.search {
+		padding-top: 80px;
+	}
+}
+
+
+@media screen and (max-width: 420px) {
+	.search__input {
+		font-size: 11px;
+		line-height: 1.54;
+	}
+
+	.search__label {
+		font-size: 11px;
+		line-height: 1.63;
+	}
 }

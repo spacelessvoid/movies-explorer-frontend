@@ -24,3 +24,18 @@
 	font-weight: 500;
 	line-height: normal;
 }
+
+@media screen and (max-width: 800px) {
+	.movies__list {
+		margin-top: 50px;
+		gap: 30px;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.movies__list {
+		margin-top: 50px;
+		padding-top: 50px;
+		gap: 14px;
+	}
+}

@@ -71,3 +71,20 @@
 	font-size: 11px;
 	line-height: normal;
 }
+
+@media screen and (max-width: 800px) {
+	.card__info {
+		padding: 7px 14px 14px;
+	}
+}
+
+
+@media screen and (max-width: 420px) {
+	.card__name {
+		font-size: 12px;
+	}
+
+	.card__duration {
+		font-size: 10px;
+	}
+}
