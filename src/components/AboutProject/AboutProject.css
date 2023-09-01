@@ -50,6 +50,7 @@
 }
 
 .timeline__item {
+	margin: 0;
 	padding: 9px 10px;
 	text-align: center;
 	color: #8B8B8B;

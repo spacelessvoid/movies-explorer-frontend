@@ -1,0 +1,19 @@
+.logo {
+	line-height: 0;
+}
+
+.logo__image_type_header {
+	margin-right: 30px;
+}
+
+.logo__image_type_welcome {
+	display: block;
+	margin: 0;
+}
+
+@media screen and (max-width: 420px) {
+	.logo__image_type_welcome {
+		display: block;
+		margin: 0 auto;
+	}
+}

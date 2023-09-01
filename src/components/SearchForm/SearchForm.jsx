@@ -2,11 +2,15 @@ import "./SearchForm.css";
 
 function SearchForm() {
   return (
-    <div className="search">
+    <section className="search">
       <form id="search" className="search__form">
         <fieldset className="search__fieldset">
           <input type="text" className="search__input" placeholder="Фильм" />
-          <button type="submit" className="search__button" aria-label="Искать фильмы">
+          <button
+            type="submit"
+            className="search__button"
+            aria-label="Искать фильмы"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -18,9 +22,9 @@ function SearchForm() {
               <path
                 d="M15 23L20 17L15 11"
                 stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -39,7 +43,7 @@ function SearchForm() {
           </label>
         </fieldset>
       </form>
-    </div>
+    </section>
   );
 }
 

@@ -38,7 +38,7 @@ function MoviesCard({
       <img src={image} alt={name} className="card__image" />
       <div className="card__info">
         <div className="card__wrapper">
-          <p className="card__name">{name}</p>
+          <h2 className="card__name">{name}</h2>
           <button
             className={cardButtonClassName}
             type="button"

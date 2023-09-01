@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
 //TODO remove after testing
-import * as data from "../../temp/data";
+import { data } from "../../temp/data";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -35,9 +35,12 @@ function App() {
         <Route path={login} element={<Login />} />
 
         {/* TODO Update data after testing */}
-        <Route path={movies} element={<Movies movies={data.data} />} />
-        <Route path={saved} element={<SavedMovies movies={data.data} />} />
-        <Route path={profile} element={<Profile />} />
+        <Route path={movies} element={<Movies movies={data} />} />
+        <Route path={saved} element={<SavedMovies movies={data} />} />
+        <Route
+          path={profile}
+          element={<Profile setIsLoggedIn={setIsLoggedIn} />}
+        />
 
         <Route path="*" element={<Navigate to="/404" replace />} />
         <Route path="/404" element={<PageNotFound />} />

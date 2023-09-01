@@ -13,10 +13,12 @@
 }
 
 .footer__bottom {
+	list-style-type: none;
 	display: flex;
 	justify-content: end;
 	column-gap: 20px;
 	align-items: center;
+	margin: 0;
 	padding: 20px 0;
 	border-top: #424242 1px solid;
 }

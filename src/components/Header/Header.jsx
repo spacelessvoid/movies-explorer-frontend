@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
-import logo from "../../images/header-logo.svg";
+import Logo from "../Logo/Logo";
 
 function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ function Header({ isLoggedIn }) {
 
   return (
     <header className="header">
-      <img src={logo} alt="Logo" className="header__logo" />
+      <Logo isPositionHeader={true} />
       {isLoggedIn ? (
         <>
           <label className="hamburger-menu" data-open={isOpen}>

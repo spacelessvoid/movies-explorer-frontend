@@ -2,7 +2,7 @@ import "./DefaultFormButton.css";
 
 function DefaultFormButton({ buttonText, onClick }) {
   return (
-    <button className="form__button" type="submit" onClick={onClick}>
+    <button className="form-button" type="submit" onClick={onClick}>
       {buttonText}
     </button>
   );

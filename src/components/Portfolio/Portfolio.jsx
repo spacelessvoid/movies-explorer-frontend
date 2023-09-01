@@ -6,22 +6,37 @@ function Portfolio() {
       <h3 className="portfolio__title">Портфолио</h3>
       <ul className="portfolio__list">
         <li className="portfolio__list-item">
-          <a href="https://ya.ru" className="portfolio__link">
-            Статичный сайт
+          <a
+            href="https://github.com/spacelessvoid/how-to-learn"
+            className="portfolio__link"
+            target="blank"
+            rel="noreferrer"
+          >
+            <span>Статичный сайт</span>
+            <span>↗</span>
           </a>
-          <span>↗</span>
         </li>
         <li className="portfolio__list-item">
-          <a href="https://ya.ru" className="portfolio__link">
-            Адаптивный сайт
+          <a
+            href="https://github.com/spacelessvoid/russian-travel"
+            className="portfolio__link"
+            target="blank"
+            rel="noreferrer"
+          >
+            <span>Адаптивный сайт</span>
+            <span>↗</span>
           </a>
-          <span>↗</span>
         </li>
         <li className="portfolio__list-item">
-          <a href="https://ya.ru" className="portfolio__link">
-            Одностраничное приложение
+          <a
+            href="https://github.com/spacelessvoid/react-mesto-api-full-gha"
+            className="portfolio__link"
+            target="blank"
+            rel="noreferrer"
+          >
+            <span>Одностраничное приложение</span>
+            <span>↗</span>
           </a>
-          <span>↗</span>
         </li>
       </ul>
     </section>

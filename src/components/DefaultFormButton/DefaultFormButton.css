@@ -1,4 +1,4 @@
-.form__button {
+.form-button {
 	margin: auto 0 8px;
 	padding: 13px 15px 15px;
 	border: none;
@@ -13,13 +13,13 @@
 	transition: color .5s, background-color .5s;
 }
 
-.form__button:hover {
+.form-button:hover {
 	color: hsl(0, 0%, 100%, .8);
 	background-color: hsl(229, 89%, 58%, .8);
 }
 
 @media screen and (max-width: 420px) {
-	.form__button {
+	.form-button {
 		font-size: 12px;
 	}
 }

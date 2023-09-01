@@ -6,18 +6,29 @@ function Footer() {
       <p className="footer__info">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
-      <div className="footer__bottom">
-        <p className="footer__copy">©2023</p>
-        <a href="https://practicum.yandex.ru" className="footer__link">
-          Яндекс.Практикум
-        </a>
-        <a
-          href="https://github.com/spacelessvoid/movies-explorer-frontend"
-          className="footer__link"
-        >
-          Github
-        </a>
-      </div>
+      <ul className="footer__bottom">
+        <li className="footer__copy">©2023</li>
+        <li>
+          <a
+            href="https://practicum.yandex.ru"
+            className="footer__link"
+            target="blank"
+            rel="noreferrer"
+          >
+            Яндекс.Практикум
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/spacelessvoid/movies-explorer-frontend"
+            className="footer__link"
+            target="blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
+        </li>
+      </ul>
     </footer>
   );
 }
