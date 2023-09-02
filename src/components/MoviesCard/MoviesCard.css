@@ -9,7 +9,7 @@
 .card__image {
 	display: block;
 	width: 100%;
-	max-height: 203px;
+	aspect-ratio: 9 / 5;
 	object-fit: cover;
 	object-position: center;
 	background-color: var(--clr-alternative);
