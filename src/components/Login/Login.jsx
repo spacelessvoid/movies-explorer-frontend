@@ -11,8 +11,8 @@ function Login() {
       locationLinkText={"Регистрация"}
       locationLink={registration}
     >
-      <WelcomeInput type={"email"} labelText={"E-mail"} />
-      <WelcomeInput type={"password"} labelText={"Пароль"} />
+      <WelcomeInput type={"email"} labelText={"E-mail"} placeholder={"Введите ваш e-mail"} />
+      <WelcomeInput type={"password"} labelText={"Пароль"} minLength={"8"} placeholder={"Введите ваш пароль"} />
     </WelcomeContent>
   );
 }

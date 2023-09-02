@@ -1,6 +1,14 @@
 import "./WelcomeInput.css";
 
-function WelcomeInput({ type, labelText, value, onChange }) {
+function WelcomeInput({
+  type,
+  labelText,
+  value,
+  placeholder,
+  onChange,
+  minLength,
+  maxLength,
+}) {
   return (
     <>
       <label className="welcome__label" htmlFor={type}>
@@ -12,8 +20,11 @@ function WelcomeInput({ type, labelText, value, onChange }) {
         name={type}
         id={type}
         value={value}
+        placeholder={placeholder}
         onChange={onChange}
         required
+        minLength={minLength}
+        maxLength={maxLength}
       />
     </>
   );

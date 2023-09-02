@@ -42,7 +42,7 @@ function Profile({
       <section>
         <form className="profile__form">
           <fieldset className="profile__fieldset">
-            <label htmlFor="name" className="profile__name-label">
+            <label htmlFor="name" className="profile__label">
               Имя
             </label>
             <input
@@ -50,20 +50,26 @@ function Profile({
               ref={input}
               value={username}
               type="text"
-              className="profile__name-input"
+              className="profile__input"
               disabled={isDisabled}
+              placeholder="введите ваше имя"
+              required
+              minLength="2"
+              maxLength="30"
             />
           </fieldset>
           <fieldset className="profile__fieldset">
-            <label htmlFor="email" className="profile__email-label">
+            <label htmlFor="email" className="profile__label">
               E-mail
             </label>
             <input
               id="email"
               value={userEmail}
               type="email"
-              className="profile__email-input"
+              className="profile__input"
               disabled={isDisabled}
+              placeholder="введите ваш e-mail"
+              required
             />
           </fieldset>
           {isDisabled ? (

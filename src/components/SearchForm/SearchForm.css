@@ -19,15 +19,18 @@
 .search__input {
 	flex-basis: 100%;
 	padding: 14px 46px 14px 22px;
+	outline: transparent;
 	border: none;
 	background-color: transparent;
 	color: hsl(0, 0%, 55%);
 	font-size: 13px;
 	line-height: 1.38;
+	transition: outline .2s;
 }
 
 .search__input:focus {
 	border-radius: 40px;
+	outline: 1px solid #4285F4;
 }
 
 .search__button {

@@ -10,6 +10,12 @@
 	background-color: hsl(229, 89%, 58%);
 }
 
+.form-button:disabled {
+	color: hsl(0, 0%, 35%);
+	background-color: hsl(0, 0%, 10%);
+	cursor: default;
+}
+
 @media screen and (max-width: 420px) {
 	.form-button {
 		font-size: 12px;

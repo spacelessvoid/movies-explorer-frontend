@@ -11,9 +11,15 @@ function Register() {
       locationLinkText={"Войти"}
       locationLink={login}
     >
-      <WelcomeInput type={"text"} labelText={"Имя"} />
-      <WelcomeInput type={"email"} labelText={"E-mail"} />
-      <WelcomeInput type={"password"} labelText={"Пароль"} />
+      <WelcomeInput
+        type={"text"}
+        labelText={"Имя"}
+        minLength={"2"}
+        maxLength={"30"}
+        placeholder={"Как вас зовут?"}
+      />
+      <WelcomeInput type={"email"} labelText={"E-mail"} placeholder={"Укажите ваш e-mail"} />
+      <WelcomeInput type={"password"} labelText={"Пароль"} minLength={"8"} placeholder={"Придумайте надежный пароль"} />
     </WelcomeContent>
   );
 }

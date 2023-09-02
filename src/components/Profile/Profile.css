@@ -24,7 +24,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 0;
-	padding: 15px 0;
+	padding: 10px 0;
 	border: 0;
 	font-size: 11px;
 	line-height: normal;
@@ -38,17 +38,29 @@
 	margin-bottom: 70px;
 }
 
-.profile__name-label,
-.profile__email-label {
+.profile__label {
+	min-width: 40px;
+	padding-block: 5px;
 	font-weight: 500;
 }
 
-.profile__name-input,
-.profile__email-input {
-	color: var(--clr-secondary);
-	text-align: right;
-	background: transparent;
+.profile__input {
+	width: 100%;
+	padding-block: 5px;
+	outline: 2px solid transparent;
 	border: 0;
+	text-align: right;
+	color: var(--clr-secondary);
+	background-color: transparent;
+	transition: outline .2s, background-color .2s;
+}
+
+.profile__input:focus {
+	outline: 2px solid var(--clr-accent);
+}
+
+.profile__input:not(:disabled) {
+	background-color: var(--clr-alternative);
 }
 
 .profile__button {

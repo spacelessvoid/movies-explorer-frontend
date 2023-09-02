@@ -5,7 +5,7 @@ function SearchForm() {
     <section className="search">
       <form id="search" className="search__form">
         <fieldset className="search__fieldset">
-          <input type="text" className="search__input" placeholder="Фильм" />
+          <input type="text" className="search__input" placeholder="Найти фильм" required />
           <button
             type="submit"
             className="button search__button"
