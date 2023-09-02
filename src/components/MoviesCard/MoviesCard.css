@@ -40,10 +40,6 @@
 	background-position: center;
 	background-color: transparent;
 	background-repeat: no-repeat;
-	border: none;
-	margin: 0;
-	padding: 0;
-	cursor: pointer;
 	margin-left: 21px;
 }
 
@@ -62,7 +58,17 @@
 
 .card__fav-btn_active {
 	background-image: url('../../images/btn-save-active.svg');
+	animation: like-pop .4s ease-in-out;
+}
 
+@keyframes like-pop {
+	from {
+		transform: scale(130%, 130%);
+	}
+
+	to {
+		transform: scale(100%, 100%);
+	}
 }
 
 .card__duration {
@@ -75,6 +81,10 @@
 @media screen and (max-width: 800px) {
 	.card__info {
 		padding: 7px 14px 14px;
+	}
+
+	.card .card__del-btn {
+		background-image: url('../../images/btn-remove.svg');
 	}
 }
 

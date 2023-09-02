@@ -15,7 +15,7 @@ function AboutMe() {
         </p>
         <a
           href="https://github.com/spacelessvoid"
-          className="about__link"
+          className="link about__link"
           target="blank"
           rel="noreferrer"
         >

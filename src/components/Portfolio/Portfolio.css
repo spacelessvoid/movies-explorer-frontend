@@ -35,13 +35,7 @@
 .portfolio__link {
 	display: flex;
 	justify-content: space-between;
-	text-decoration: none;
 	color: var(--clr-secondary);
-	transition: color .5s;
-}
-
-.portfolio__link:hover {
-	color: color-mix(in srgb, var(--clr-secondary) 70%, transparent);
 }
 
 @media screen and (max-width: 800px) {

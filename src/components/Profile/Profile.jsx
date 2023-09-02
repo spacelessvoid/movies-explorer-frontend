@@ -69,14 +69,14 @@ function Profile({
           {isDisabled ? (
             <>
               <button
-                className="profile__button profile__button_type_edit"
+                className="button profile__button profile__button_type_edit"
                 type="button"
                 onClick={handleEnableEditing}
               >
                 Редактировать
               </button>
               <button
-                className="profile__button profile__button_type_logout"
+                className="button profile__button profile__button_type_logout"
                 type="button"
                 onClick={handleLogout}
               >

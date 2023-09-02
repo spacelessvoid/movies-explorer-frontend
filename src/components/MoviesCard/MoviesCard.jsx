@@ -19,8 +19,8 @@ function MoviesCard({
   // const isFavorite = owner.some();
 
   const cardButtonClassName = isPathSavedMovies
-    ? `card__btn card__del-btn`
-    : `card__btn card__fav-btn ${isFavorite && "card__fav-btn_active"}`;
+    ? `button card__btn card__del-btn`
+    : `button card__btn card__fav-btn ${isFavorite && "card__fav-btn_active"}`;
 
   const cardButtonAriaLabel = isPathSavedMovies
     ? "Удалить из избранного"

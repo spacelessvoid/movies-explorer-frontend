@@ -14,7 +14,7 @@ function MoviesCardList({ movies }) {
     <section className="movies__list">
       {moviesList}
       {!isPathSavedMovies && (
-        <button className="movies__more-btn" aria-label="Загрузить еще" type="button">
+        <button className="button movies__more-btn" aria-label="Загрузить еще" type="button">
           Ещё
         </button>
       )}

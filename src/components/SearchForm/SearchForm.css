@@ -35,11 +35,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	border: none;
 	margin: 6px;
-	padding: 0;
-	cursor: pointer;
-	background-color: transparent;
 }
 
 .search__shorts {

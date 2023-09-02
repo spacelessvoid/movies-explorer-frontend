@@ -52,33 +52,18 @@
 }
 
 .profile__button {
-	margin: 0;
-	padding: 0;
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-	color: var(--clr-secondary);
 	text-align: center;
 	font-size: 13px;
 	line-height: normal;
-	transition: color .5s, background-color .5s;
+	padding: 8px;
 }
 
 .profile__button_type_edit {
 	margin: auto auto 0;
-	padding: 8px;
-}
-
-.profile__button_type_edit:hover {
-	color: hsl(0, 0%, 100%, .8);
+	color: var(--clr-secondary);
 }
 
 .profile__button_type_logout {
 	margin: 0 auto;
-	padding: 8px;
 	color: hsl(344, 85%, 57%);
-}
-
-.profile__button_type_logout:hover {
-	color: hsl(344, 85%, 57%, .8);
 }

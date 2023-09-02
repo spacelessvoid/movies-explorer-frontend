@@ -8,7 +8,7 @@ function Portfolio() {
         <li className="portfolio__list-item">
           <a
             href="https://github.com/spacelessvoid/how-to-learn"
-            className="portfolio__link"
+            className="link portfolio__link"
             target="blank"
             rel="noreferrer"
           >
@@ -19,7 +19,7 @@ function Portfolio() {
         <li className="portfolio__list-item">
           <a
             href="https://github.com/spacelessvoid/russian-travel"
-            className="portfolio__link"
+            className="link portfolio__link"
             target="blank"
             rel="noreferrer"
           >
@@ -30,7 +30,7 @@ function Portfolio() {
         <li className="portfolio__list-item">
           <a
             href="https://github.com/spacelessvoid/react-mesto-api-full-gha"
-            className="portfolio__link"
+            className="link portfolio__link"
             target="blank"
             rel="noreferrer"
           >

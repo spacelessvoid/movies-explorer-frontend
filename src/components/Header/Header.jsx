@@ -33,8 +33,8 @@ function Header({ isLoggedIn }) {
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "header__hidden header__link header__link_active"
-                  : "header__hidden header__link"
+                  ? "link header__hidden header__link header__link_active"
+                  : "link header__hidden header__link"
               }
             >
               Главная
@@ -43,7 +43,9 @@ function Header({ isLoggedIn }) {
               onClick={handleCloseMenu}
               to={movies}
               className={({ isActive }) =>
-                isActive ? "header__link header__link_active" : "header__link"
+                isActive
+                  ? "link header__link header__link_active"
+                  : "link header__link"
               }
             >
               Фильмы
@@ -52,7 +54,9 @@ function Header({ isLoggedIn }) {
               onClick={handleCloseMenu}
               to={saved}
               className={({ isActive }) =>
-                isActive ? "header__link header__link_active" : "header__link"
+                isActive
+                  ? "link header__link header__link_active"
+                  : "link header__link"
               }
             >
               Сохранённые фильмы
@@ -60,7 +64,7 @@ function Header({ isLoggedIn }) {
             <NavLink
               onClick={handleCloseMenu}
               to={profile}
-              className="header__profile-btn"
+              className="link header__profile-btn"
             >
               <span>Аккаунт</span>
               <span></span>
@@ -69,10 +73,10 @@ function Header({ isLoggedIn }) {
         </>
       ) : (
         <nav className="header__welcome">
-          <NavLink to={registration} className="header__link">
+          <NavLink to={registration} className="link header__link">
             Регистрация
           </NavLink>
-          <NavLink to={login} className="header__link header__button">
+          <NavLink to={login} className="link header__link header__button">
             Войти
           </NavLink>
         </nav>

@@ -39,13 +39,7 @@
 .pnf__link {
 	display: block;
 	text-align: center;
-	text-decoration: none;
 	color: hsl(217, 89%, 61%);
-	transition: color .5s;
-}
-
-.pnf__link:hover {
-	color: hsl(217, 89%, 61%, .8);
 }
 
 @media screen and (max-width: 420px) {

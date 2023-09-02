@@ -26,6 +26,31 @@
   border-bottom: #DADADA 1px solid;
 }
 
+.link {
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity .4s;
+  cursor: pointer;
+}
+
+.link:hover {
+  opacity: .7;
+}
+
+.button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .4s;
+}
+
+.button:hover {
+  opacity: .8;
+}
+
 @media screen and (max-width: 420px) {
   .section-title {
     margin: 0 0 60px;

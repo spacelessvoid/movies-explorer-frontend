@@ -4,7 +4,7 @@ import logo from "../../images/header-logo.svg";
 
 function Logo({ isPositionHeader }) {
   return (
-    <Link to="/" className="logo">
+    <Link to="/" className="logo link">
       <img
         src={logo}
         alt="Лого"

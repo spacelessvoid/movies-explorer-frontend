@@ -21,11 +21,7 @@
 
 .navigation__link {
 	color: var(--clr-secondary);
-	transition: all .5s;
-}
-
-.navigation__link:hover {
-	color: color-mix(in srgb, var(--clr-secondary) 70%, transparent);
+	border-bottom: 1px solid;
 }
 
 @media screen and (max-width: 420px) {

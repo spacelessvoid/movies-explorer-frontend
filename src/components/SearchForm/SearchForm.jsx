@@ -8,7 +8,7 @@ function SearchForm() {
           <input type="text" className="search__input" placeholder="Фильм" />
           <button
             type="submit"
-            className="search__button"
+            className="button search__button"
             aria-label="Искать фильмы"
           >
             <svg

@@ -9,7 +9,7 @@ const PageNotFound = () => (
         <p className="pnf__text">Страница не найдена</p>
       </section>
       <section className="pnf__footer">
-        <Link className="pnf__link" to="/">
+        <Link className="link pnf__link" to="/">
           Назад
         </Link>
       </section>

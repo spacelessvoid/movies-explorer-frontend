@@ -22,7 +22,7 @@ function WelcomeContent({
         </WelcomeForm>
         <p className="welcome__text">
           <span>{locationElse} </span>
-          <Link className="welcome__link" to={locationLink}>
+          <Link className="link welcome__link" to={locationLink}>
             {locationLinkText}
           </Link>
         </p>
