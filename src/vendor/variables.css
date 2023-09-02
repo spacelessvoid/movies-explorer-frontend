@@ -19,5 +19,7 @@
 	@media screen and (max-width: 420px) {
 		--padding-inline-l: 18px;
 		--padding-inline-m: 10px;
+		--padding-block-l: 70px;
+
 	}
 }

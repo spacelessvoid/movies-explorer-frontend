@@ -20,3 +20,7 @@
 .welcome__input:focus {
 	outline: 2px solid var(--clr-accent);
 }
+
+.welcome__input-error {
+	color: #EE3465;
+}

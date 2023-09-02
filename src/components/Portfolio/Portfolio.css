@@ -1,11 +1,11 @@
 .portfolio {
 	max-width: 1140px;
 	margin: 0 auto;
-	padding: 0 var(--padding-inline-l) 125px;
+	padding: 0 var(--padding-inline-l) var(--padding-block-l);
 }
 
 .portfolio__title {
-	margin: 0 0 50px;
+	margin: 0 0 30px;
 	color: #8B8B8B;
 	font-size: 18px;
 	font-weight: 400;
@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 800px) {
 	.portfolio {
-		padding-bottom: 90px;
+		padding-block: 15px 70px;
 	}
 
 	.portfolio__list-item {
@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 560px) {
 	.portfolio {
-		padding-bottom: 50px;
+		padding-block: 0 50px;
 	}
 
 	.portfolio__title {

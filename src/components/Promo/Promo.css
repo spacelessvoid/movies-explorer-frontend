@@ -25,11 +25,34 @@
 }
 
 @media screen and (max-width: 800px) {
+
 	.hero {
-		min-height: calc(100vh - 74px - 40px);
+		min-height: 750px;
 	}
 
 	.hero__background {
-		min-height: calc(100vh - 74px - 40px);
+		min-height: 750px;
+	}
+}
+
+@media screen and (max-width: 420px) {
+
+	.hero {
+		min-height: 570px;
+		padding: 55px 0 20px;
+	}
+
+	.hero__background {
+		min-height: 570px;
+	}
+
+	.hero__title {
+		font-size: 31px;
+		line-height: 1.25;
+		letter-spacing: -1.24px;
+	}
+
+	.hero__background {
+		background-size: 248px;
 	}
 }

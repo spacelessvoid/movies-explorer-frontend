@@ -47,8 +47,13 @@
 }
 
 @media screen and (max-width: 800px) {
+
 	.about__content {
 		grid-template-columns: 1fr 255px;
+	}
+
+	.about__photo {
+		min-height: 300px;
 	}
 
 	.about__name {

@@ -8,7 +8,6 @@ function Logo({ isPositionHeader }) {
       <img
         src={logo}
         alt="Лого"
-        isPositionHeader={isPositionHeader}
         className={`logo__image ${
           isPositionHeader
             ? "logo__image_type_header"

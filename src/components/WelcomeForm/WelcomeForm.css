@@ -1,8 +1,12 @@
 .welcome__form {
-	min-height: 376px;
+	min-height: 398px;
 	max-width: 396px;
 	display: flex;
 	flex-direction: column;
+}
+
+.welcome__form .button {
+	margin-top: auto;
 }
 
 .welcome__error-text {

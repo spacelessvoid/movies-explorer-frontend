@@ -26,6 +26,7 @@
 
 @media screen and (max-width: 420px) {
 	.navigation__list-item {
+		padding-inline: 10px;
 		font-size: 11px;
 		line-height: 1.45;
 	}

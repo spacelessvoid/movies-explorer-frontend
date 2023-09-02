@@ -1,7 +1,7 @@
 .header {
 	max-width: 1140px;
 	margin: 0 auto;
-	padding: 18px var(--padding-inline-m);
+	padding: 18px 70px;
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -73,7 +73,7 @@
 }
 
 .hamburger-menu {
-	--bar-width: 22px;
+	--bar-width: 28px;
 	--bar-height: 3px;
 	--hamburger-gap: 5px;
 	--hamburger-margin: 40px;
@@ -90,7 +90,6 @@
 	gap: var(--hamburger-gap);
 	width: max-content;
 	position: absolute;
-	top: var(--hamburger-margin + 10px);
 	right: var(--padding-inline-m);
 	z-index: 3;
 	cursor: pointer;
@@ -148,6 +147,10 @@
 
 @media screen and (max-width: 800px) {
 
+	.header {
+		padding-inline: 30px;
+	}
+
 	.header__user {
 		box-sizing: border-box;
 		flex-direction: column;
@@ -177,7 +180,7 @@
 	}
 
 	.header__user .header__link {
-		margin-bottom: 22px;
+		margin: 0 0 20px;
 		padding-bottom: 4px;
 		border-bottom: 2px solid transparent;
 		text-align: center;
@@ -211,8 +214,20 @@
 }
 
 @media screen and (max-width: 420px) {
+	.header {
+		padding-inline: 14px;
+	}
+
 	.header__welcome .header__link {
 		font-size: 10px;
 		line-height: 1.6;
+	}
+
+	.hamburger-menu {
+		--bar-width: 22px;
+		--bar-height: 2px;
+		--hamburger-gap: 6px;
+
+		right: 22px;
 	}
 }

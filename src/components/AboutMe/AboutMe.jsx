@@ -8,10 +8,8 @@ function AboutMe() {
         <h3 className="about__name">Алексей</h3>
         <p className="about__profession">Фронтенд-разработчик, 36 лет</p>
         <p className="about__bio">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id
-          consequatur atque deserunt doloribus perspiciatis voluptatibus
-          assumenda natus sint accusantium delectus, expedita quasi facere
-          velit?
+        Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
+и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
         </p>
         <a
           href="https://github.com/spacelessvoid"
