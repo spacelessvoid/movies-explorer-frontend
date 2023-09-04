@@ -1,0 +1,100 @@
+.card {
+	background-color: var(--clr-primary);
+	border-radius: 6px;
+	box-shadow: 0px 4px 30px 0px hsla(0, 0%, 0%, 0.08);
+	min-width: 300px;
+	overflow: hidden;
+}
+
+.card__image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 9 / 5;
+	object-fit: cover;
+	object-position: center;
+	background-color: var(--clr-alternative);
+	text-align: center;
+}
+
+.card__info {
+	padding: 9px 16px 16px;
+}
+
+.card__wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card__name {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.card__btn {
+	height: 30px;
+	width: 30px;
+	background-size: 30px;
+	background-position: center;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	margin-left: 21px;
+}
+
+.card__del-btn {
+	background-image: none;
+	background-size: 7px;
+}
+
+.card:hover .card__del-btn {
+	background-image: url('../../images/btn-remove.svg');
+}
+
+.card__fav-btn {
+	background-image: url('../../images/btn-save.svg');
+}
+
+.card__fav-btn_active {
+	background-image: url('../../images/btn-save-active.svg');
+	animation: like-pop .4s ease-in-out;
+}
+
+@keyframes like-pop {
+	from {
+		transform: scale(130%, 130%);
+	}
+
+	to {
+		transform: scale(100%, 100%);
+	}
+}
+
+.card__duration {
+	margin: 7px 0 0;
+	color: hsl(0, 0%, 55%);
+	font-size: 11px;
+	line-height: normal;
+}
+
+@media screen and (max-width: 800px) {
+	.card__info {
+		padding: 7px 14px 14px;
+	}
+
+	.card .card__del-btn {
+		background-image: url('../../images/btn-remove.svg');
+	}
+}
+
+
+@media screen and (max-width: 420px) {
+	.card__name {
+		font-size: 12px;
+	}
+
+	.card__duration {
+		font-size: 10px;
+	}
+}

@@ -1,0 +1,33 @@
+.navigation {
+	background-color: var(--clr-alternative);
+	padding-inline: 10px;
+}
+
+.navigation__list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navigation__list-item {
+	padding: 24px 20px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.23;
+}
+
+.navigation__link {
+	color: var(--clr-secondary);
+	border-bottom: 1px solid;
+}
+
+@media screen and (max-width: 420px) {
+	.navigation__list-item {
+		padding-inline: 10px;
+		font-size: 11px;
+		line-height: 1.45;
+	}
+}

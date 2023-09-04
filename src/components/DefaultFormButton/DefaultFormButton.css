@@ -1,0 +1,23 @@
+.form-button {
+	margin: 0 0 8px;
+	padding: 13px 15px 15px;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: normal;
+	color: var(--clr-secondary);
+	background-color: hsl(229, 89%, 58%);
+}
+
+.form-button:disabled {
+	color: hsl(0, 0%, 35%);
+	background-color: hsl(0, 0%, 10%);
+	cursor: default;
+}
+
+@media screen and (max-width: 420px) {
+	.form-button {
+		font-size: 12px;
+	}
+}

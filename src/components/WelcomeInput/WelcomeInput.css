@@ -1,0 +1,26 @@
+.welcome__label {
+	padding: 10px 0;
+	color: #8B8B8B;
+	font-size: 10px;
+}
+
+.welcome__input {
+	margin-bottom: 10px;
+	padding: 15px;
+	outline: 2px solid transparent;
+	border: 0;
+	border-radius: 8px;
+	background-color: var(--clr-alternative);
+	color: var(--clr-secondary);
+	font-size: 13px;
+	line-height: normal;
+	transition: outline .2s;
+}
+
+.welcome__input:focus {
+	outline: 2px solid var(--clr-accent);
+}
+
+.welcome__input-error {
+	color: #EE3465;
+}

@@ -1,0 +1,28 @@
+.welcome__form {
+	min-height: 398px;
+	max-width: 396px;
+	display: flex;
+	flex-direction: column;
+}
+
+.welcome__form .button {
+	margin-top: auto;
+}
+
+.welcome__error-text {
+	display: none;
+	margin: 0;
+	color: #EE3465;
+	font-size: 10px;
+}
+
+.welcome__error-text_visible {
+	display: block;
+}
+
+@media screen and (max-width: 420px) {
+	.welcome__form {
+		min-height: auto;
+		flex-grow: 1;
+	}
+}
