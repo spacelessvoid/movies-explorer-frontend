@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import { getAllMovies } from "../../utils/MoviesApi";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
-//TODO remove after testing
-import { data } from "../../temp/data";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -23,6 +22,18 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+  const [moviesList, setMoviesList] = useState(null);
+
+  function handleGetAllMovies() {
+    if (moviesList === null) {
+      getAllMovies()
+        .then(data => setMoviesList(data))
+        .catch(console.error);
+    } else {
+      console.log(moviesList);
+    }
+  }
+
   return (
     <div className="page">
       {!(isPathRegistration || isPathLogin || isPageNotFound) && (
@@ -34,9 +45,16 @@ function App() {
         <Route path={registration} element={<Register />} />
         <Route path={login} element={<Login />} />
 
-        {/* TODO Update data after testing */}
-        <Route path={movies} element={<Movies movies={data} />} />
-        <Route path={saved} element={<SavedMovies movies={data} />} />
+        <Route
+          path={movies}
+          element={
+            <Movies
+              handleGetAllMovies={handleGetAllMovies}
+              moviesList={moviesList}
+            />
+          }
+        />
+        <Route path={saved} element={<SavedMovies />} />
         <Route
           path={profile}
           element={<Profile setIsLoggedIn={setIsLoggedIn} />}

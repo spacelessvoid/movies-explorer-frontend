@@ -1,15 +1,27 @@
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({ onSearchClick }) {
+  function handleClick(e) {
+    e.preventDefault();
+
+    onSearchClick();
+  }
+
   return (
     <section className="search">
       <form id="search" className="search__form">
         <fieldset className="search__fieldset">
-          <input type="text" className="search__input" placeholder="Найти фильм" required />
+          <input
+            type="text"
+            className="search__input"
+            placeholder="Найти фильм"
+            required
+          />
           <button
             type="submit"
             className="button search__button"
             aria-label="Искать фильмы"
+            onClick={handleClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

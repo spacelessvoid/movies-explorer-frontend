@@ -2,11 +2,12 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function Movies({ movies }) {
+function Movies({ moviesList, handleGetAllMovies }) {
+
   return (
     <main className="movies">
-      <SearchForm />
-      <MoviesCardList movies={movies} />
+      <SearchForm onSearchClick={handleGetAllMovies} />
+      <MoviesCardList />
     </main>
   );
 }
