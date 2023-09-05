@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.nomoreparties.co/";
+import { BASE_URL } from "./constants";
 
 function getMoviesFrom3rdPartyApi() {
   return fetch(`${BASE_URL}/beatfilm-movies`, {
@@ -11,4 +11,4 @@ function getMoviesFrom3rdPartyApi() {
   });
 }
 
-export { getMoviesFrom3rdPartyApi as getAllMovies, BASE_URL };
+export { getMoviesFrom3rdPartyApi as getAllMovies };

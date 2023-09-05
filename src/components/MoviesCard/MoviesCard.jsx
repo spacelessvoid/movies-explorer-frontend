@@ -1,15 +1,13 @@
 import "./MoviesCard.css";
 import { useState } from "react";
+import { BASE_URL } from "../../utils/constants";
 
 function MoviesCard({
-  movie: { nameRU: name, duration, owner },
+  movie: { nameRU: name, duration, trailerLink, image },
   isPathSavedMovies,
 }) {
   //TODO For testing, remove after
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const image =
-    "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg";
 
   function handleAddFavClick() {
     setIsFavorite(!isFavorite);
@@ -35,7 +33,9 @@ function MoviesCard({
 
   return (
     <article className="card">
-      <img src={image} alt={name} className="card__image" />
+      <a href={trailerLink} target="blank">
+        <img src={BASE_URL + image.url} alt={name} className="card__image" />
+      </a>
       <div className="card__info">
         <div className="card__wrapper">
           <h2 className="card__name">{name}</h2>

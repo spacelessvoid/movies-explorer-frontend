@@ -1,27 +1,35 @@
+import { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm({ onSearchClick }) {
+function SearchForm({ onSearchClick, setSearchQuery }) {
+  const [input, setInput] = useState("");
+
+  function onChange(e) {
+    setInput(e.target.value.toLowerCase());
+  }
+
   function handleClick(e) {
     e.preventDefault();
-
     onSearchClick();
+    setSearchQuery(input);
   }
 
   return (
     <section className="search">
-      <form id="search" className="search__form">
+      <form id="search" className="search__form" onSubmit={handleClick}>
         <fieldset className="search__fieldset">
           <input
             type="text"
             className="search__input"
             placeholder="Найти фильм"
             required
+            value={input}
+            onChange={onChange}
           />
           <button
             type="submit"
             className="button search__button"
             aria-label="Искать фильмы"
-            onClick={handleClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

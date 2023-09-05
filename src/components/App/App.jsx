@@ -27,10 +27,10 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [moviesList, setMoviesList] = useState(null);
+  const [moviesList, setMoviesList] = useState([]);
 
   function handleGetAllMovies() {
-    if (moviesList === null) {
+    if (!moviesList.length) {
       getAllMovies()
         .then(data => setMoviesList(data))
         .catch(console.error);
