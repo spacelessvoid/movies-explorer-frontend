@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { AppContext } from "../../contexts/AppContext";
 import "./App.css";
 import { getAllMovies } from "../../utils/MoviesApi";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
@@ -21,6 +23,9 @@ function App() {
   const isPageNotFound = usePath("/404");
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [moviesList, setMoviesList] = useState(null);
 
@@ -36,40 +41,44 @@ function App() {
 
   return (
     <div className="page">
-      {!(isPathRegistration || isPathLogin || isPageNotFound) && (
-        <Header isLoggedIn={isLoggedIn} />
-      )}
+      <AppContext.Provider value={isLoading}>
+        <CurrentUserContext.Provider value={currentUser}>
+          {!(isPathRegistration || isPathLogin || isPageNotFound) && (
+            <Header isLoggedIn={isLoggedIn} />
+          )}
 
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path={registration} element={<Register />} />
-        <Route path={login} element={<Login />} />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path={registration} element={<Register />} />
+            <Route path={login} element={<Login />} />
 
-        <Route
-          path={movies}
-          element={
-            <Movies
-              handleGetAllMovies={handleGetAllMovies}
-              moviesList={moviesList}
+            <Route
+              path={movies}
+              element={
+                <Movies
+                  handleGetAllMovies={handleGetAllMovies}
+                  moviesList={moviesList}
+                />
+              }
             />
-          }
-        />
-        <Route path={saved} element={<SavedMovies />} />
-        <Route
-          path={profile}
-          element={<Profile setIsLoggedIn={setIsLoggedIn} />}
-        />
+            <Route path={saved} element={<SavedMovies />} />
+            <Route
+              path={profile}
+              element={<Profile setIsLoggedIn={setIsLoggedIn} />}
+            />
 
-        <Route path="*" element={<Navigate to="/404" replace />} />
-        <Route path="/404" element={<PageNotFound />} />
-      </Routes>
+            <Route path="*" element={<Navigate to="/404" replace />} />
+            <Route path="/404" element={<PageNotFound />} />
+          </Routes>
 
-      {!(
-        isPathProfile ||
-        isPathRegistration ||
-        isPathLogin ||
-        isPageNotFound
-      ) && <Footer />}
+          {!(
+            isPathProfile ||
+            isPathRegistration ||
+            isPathLogin ||
+            isPageNotFound
+          ) && <Footer />}
+        </CurrentUserContext.Provider>
+      </AppContext.Provider>
     </div>
   );
 }
