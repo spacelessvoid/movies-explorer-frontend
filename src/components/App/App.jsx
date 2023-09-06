@@ -17,31 +17,33 @@ import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
-  const isPathProfile = usePath(profile);
-  const isPathRegistration = usePath(registration);
-  const isPathLogin = usePath(login);
-  const isPageNotFound = usePath("/404");
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
 
   const [moviesList, setMoviesList] = useState([]);
 
+  const isPathProfile = usePath(profile);
+  const isPathRegistration = usePath(registration);
+  const isPathLogin = usePath(login);
+  const isPageNotFound = usePath("/404");
+
   function handleGetAllMovies() {
+    setIsLoading(true);
     if (!moviesList.length) {
       getAllMovies()
         .then(data => setMoviesList(data))
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => setIsLoading(false));
     } else {
-      console.log(moviesList);
+      setIsLoading(false);
     }
   }
 
   return (
     <div className="page">
-      <AppContext.Provider value={isLoading}>
+      <AppContext.Provider value={{ isLoading, setIsLoading }}>
         <CurrentUserContext.Provider value={currentUser}>
           {!(isPathRegistration || isPathLogin || isPageNotFound) && (
             <Header isLoggedIn={isLoggedIn} />

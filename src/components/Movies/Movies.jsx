@@ -5,6 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import usePath from "../../hooks/usePath";
 import { saved } from "../../utils/paths";
+import Preloader from "../Preloader/Preloader";
 
 function Movies({ moviesList, handleGetAllMovies }) {
   const [searchQuery, setSearchQuery] = useState("");
