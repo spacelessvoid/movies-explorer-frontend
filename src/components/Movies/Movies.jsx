@@ -37,7 +37,7 @@ function Movies({ moviesList, handleGetAllMovies }) {
         onSearchClick={handleGetAllMovies}
         setSearchQuery={setSearchQuery}
       />
-      <MoviesCardList renderedMovieList={renderedMovieList} />
+      <MoviesCardList renderedMovieList={renderedMovieList} searchQuery={searchQuery} />
     </main>
   );
 }

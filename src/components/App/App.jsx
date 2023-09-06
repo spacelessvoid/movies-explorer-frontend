@@ -21,6 +21,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const [moviesList, setMoviesList] = useState([]);
 
@@ -31,10 +32,14 @@ function App() {
 
   function handleGetAllMovies() {
     setIsLoading(true);
+    setIsError(false);
     if (!moviesList.length) {
       getAllMovies()
         .then(data => setMoviesList(data))
-        .catch(console.error)
+        .catch(error => {
+          setIsError(true);
+          console.error(error);
+        })
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
@@ -43,7 +48,7 @@ function App() {
 
   return (
     <div className="page">
-      <AppContext.Provider value={{ isLoading, setIsLoading }}>
+      <AppContext.Provider value={{ isLoading, isError }}>
         <CurrentUserContext.Provider value={currentUser}>
           {!(isPathRegistration || isPathLogin || isPageNotFound) && (
             <Header isLoggedIn={isLoggedIn} />
