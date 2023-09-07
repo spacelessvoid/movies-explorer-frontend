@@ -29,6 +29,17 @@ function App() {
   const isPathRegistration = usePath(registration);
   const isPathLogin = usePath(login);
   const isPageNotFound = usePath("/404");
+  const isHeaderVisible = !(
+    isPathRegistration ||
+    isPathLogin ||
+    isPageNotFound
+  );
+  const isFooterVisible = !(
+    isPathProfile ||
+    isPathRegistration ||
+    isPathLogin ||
+    isPageNotFound
+  );
 
   function handleGetAllMovies() {
     setIsLoading(true);
@@ -50,9 +61,7 @@ function App() {
     <div className="page">
       <AppContext.Provider value={{ isLoading, isError }}>
         <CurrentUserContext.Provider value={currentUser}>
-          {!(isPathRegistration || isPathLogin || isPageNotFound) && (
-            <Header isLoggedIn={isLoggedIn} />
-          )}
+          {isHeaderVisible && <Header isLoggedIn={isLoggedIn} />}
 
           <Routes>
             <Route path="/" element={<Main />} />
@@ -78,12 +87,7 @@ function App() {
             <Route path="/404" element={<PageNotFound />} />
           </Routes>
 
-          {!(
-            isPathProfile ||
-            isPathRegistration ||
-            isPathLogin ||
-            isPageNotFound
-          ) && <Footer />}
+          {isFooterVisible && <Footer />}
         </CurrentUserContext.Provider>
       </AppContext.Provider>
     </div>
