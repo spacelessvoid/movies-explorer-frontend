@@ -1,7 +1,12 @@
 import { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm({ onSearchClick, setSearchQuery }) {
+function SearchForm({
+  onSearchClick,
+  setSearchQuery,
+  toggleShortsFilter,
+  isShorts,
+}) {
   const [input, setInput] = useState("");
 
   function onChange(e) {
@@ -24,6 +29,7 @@ function SearchForm({ onSearchClick, setSearchQuery }) {
             placeholder="Найти фильм"
             required
             value={input}
+            checked={isShorts}
             onChange={onChange}
           />
           <button
@@ -56,6 +62,7 @@ function SearchForm({ onSearchClick, setSearchQuery }) {
             id="shorts"
             type="checkbox"
             className="search__checkbox"
+            onClick={toggleShortsFilter}
           />
           <label htmlFor="shorts"></label>
           <label htmlFor="shorts" className="search__label">

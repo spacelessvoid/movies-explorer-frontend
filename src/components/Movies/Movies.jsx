@@ -4,8 +4,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Movies({ moviesList, handleGetAllMovies }) {
-  const [searchQuery, setSearchQuery] = useState("");
   const [filteredMovieList, setFilteredMovieList] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isShorts, setIsShorts] = useState(false);
 
   const [numberOfCards, setNumberOfCards] = useState({
     initialCards: 0,
@@ -37,7 +38,7 @@ function Movies({ moviesList, handleGetAllMovies }) {
   }
 
   function incrementMorePage() {
-    setMorePage(prevValue => prevValue + 1);
+    setMorePage(prev => prev + 1);
     renderMovies();
   }
 
@@ -52,15 +53,25 @@ function Movies({ moviesList, handleGetAllMovies }) {
     } else return filteredMovieList;
   }
 
+  function toggleShortsFilter() {
+    setIsShorts(prev => !prev);
+  }
+
   useEffect(() => {
-    setFilteredMovieList(() =>
-      moviesList.filter(
+    setFilteredMovieList(() => {
+      const filtered = moviesList.filter(
         movie =>
           movie.nameRU.toLowerCase().includes(searchQuery) ||
           movie.nameEN.toLowerCase().includes(searchQuery),
-      ),
-    );
-  }, [searchQuery, moviesList]);
+      );
+
+      if (isShorts) {
+        return filtered.filter(short => short.duration <= 40);
+      }
+
+      return filtered;
+    });
+  }, [moviesList, searchQuery, isShorts]);
 
   useEffect(() => {
     calcNumberOfCards(document.body.clientWidth);
@@ -68,13 +79,15 @@ function Movies({ moviesList, handleGetAllMovies }) {
 
   useEffect(() => {
     setMorePage(0);
-  }, [searchQuery]);
+  }, [searchQuery, isShorts]);
 
   return (
     <main className="movies">
       <SearchForm
         onSearchClick={handleGetAllMovies}
         setSearchQuery={setSearchQuery}
+        toggleShortsFilter={toggleShortsFilter}
+        isShorts={isShorts}
       />
       <MoviesCardList
         filteredMovieList={filteredMovieList}

@@ -29,6 +29,7 @@ function App() {
   const isPathRegistration = usePath(registration);
   const isPathLogin = usePath(login);
   const isPageNotFound = usePath("/404");
+  
   const isHeaderVisible = !(
     isPathRegistration ||
     isPathLogin ||
