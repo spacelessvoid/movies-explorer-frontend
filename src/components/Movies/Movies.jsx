@@ -12,20 +12,35 @@ function Movies({ moviesList, handleGetAllMovies }) {
     setSearchQuery,
     isShorts,
     numberOfCards,
-    setNumberOfCards,
     morePage,
     setMorePage,
-    calcNumberOfCards,
+    setContentWidth,
     toggleShortsFilter,
     incrementMorePage,
     filterMovies,
     renderMovies,
   } = useMoviesFilter();
 
-  console.log(numberOfCards);
+  // console.log(numberOfCards);
 
   useEffect(() => {
-    setNumberOfCards(calcNumberOfCards(document.body.clientWidth));
+    setContentWidth();
+
+    let timer;
+
+    function handleResizeEvent() {
+      if (timer) clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        setContentWidth();
+      }, 404);
+
+      return timer;
+    }
+
+    window.addEventListener("resize", handleResizeEvent);
+
+    return () => window.removeEventListener("resize", handleResizeEvent);
   }, []);
 
   useEffect(() => {
@@ -50,7 +65,7 @@ function Movies({ moviesList, handleGetAllMovies }) {
         searchQuery={searchQuery}
         numberOfCards={numberOfCards}
         morePage={morePage}
-        incrementMorePage={incrementMorePage}
+        handleIncrementMorePage={incrementMorePage}
       />
     </main>
   );

@@ -12,7 +12,7 @@ function MoviesCardList({
   searchQuery,
   numberOfCards,
   morePage,
-  incrementMorePage,
+  handleIncrementMorePage,
 }) {
   const { isLoading, isError } = useContext(AppContext);
 
@@ -26,23 +26,13 @@ function MoviesCardList({
       (initialCards === 5 && filteredMovieList.length > 5)) &&
     !(initialCards + additionalCards * morePage >= filteredMovieList.length);
 
-  function handleIncrementMorePage() {
-    incrementMorePage();
-  }
-
-  function handleRenderMovies() {
-    const movies = renderMovies();
-
-    return movies.map(movie => (
-      <MoviesCard
-        key={movie.id}
-        movie={movie}
-        isPathSavedMovies={isPathSavedMovies}
-      />
-    ));
-  }
-
-  const renderedCards = handleRenderMovies();
+  const renderedCards = renderMovies().map(movie => (
+    <MoviesCard
+      key={movie.id}
+      movie={movie}
+      isPathSavedMovies={isPathSavedMovies}
+    />
+  ));
 
   return (
     <section className="movies__list">
@@ -52,7 +42,7 @@ function MoviesCardList({
         <p className="movies__result-text">Ничего не найдено</p>
       )}
 
-      {!isPathSavedMovies && searchQuery && isError  && (
+      {!isPathSavedMovies && searchQuery && isError && (
         <p className="movies__result-text">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз

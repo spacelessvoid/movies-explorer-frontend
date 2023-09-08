@@ -11,6 +11,10 @@ function useMoviesFilter() {
   });
   const [morePage, setMorePage] = useState(0);
 
+  function setContentWidth() {
+    setNumberOfCards(calcNumberOfCards(document.body.clientWidth));
+  }
+
   function calcNumberOfCards(contentWidth) {
     const cards = { initialCards: 0, additionalCards: 0 };
 
@@ -76,6 +80,7 @@ function useMoviesFilter() {
     setNumberOfCards,
     morePage,
     setMorePage,
+    setContentWidth,
     calcNumberOfCards,
     toggleShortsFilter,
     incrementMorePage,
