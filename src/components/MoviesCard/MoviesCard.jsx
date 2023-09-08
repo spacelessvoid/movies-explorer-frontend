@@ -1,6 +1,6 @@
 import "./MoviesCard.css";
 import { useState } from "react";
-import { BASE_URL } from "../../utils/constants";
+import { API_3P_BASE_URL } from "../../utils/constants";
 
 function MoviesCard({
   movie: { nameRU: name, duration, trailerLink, image },
@@ -34,7 +34,11 @@ function MoviesCard({
   return (
     <article className="card">
       <a href={trailerLink} target="blank">
-        <img src={BASE_URL + image.url} alt={name} className="card__image" />
+        <img
+          src={API_3P_BASE_URL + image.url}
+          alt={name}
+          className="card__image"
+        />
       </a>
       <div className="card__info">
         <div className="card__wrapper">

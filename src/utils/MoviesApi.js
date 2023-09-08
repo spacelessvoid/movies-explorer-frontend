@@ -1,7 +1,7 @@
-import { BASE_URL } from "./constants";
+import { API_3P_BASE_URL } from "./constants";
 
 function getMoviesFrom3rdPartyApi() {
-  return fetch(`${BASE_URL}/beatfilm-movies`, {
+  return fetch(`${API_3P_BASE_URL}/beatfilm-movies`, {
     method: "GET",
     Accept: "application/json",
     "Content-Type": "application/json",
