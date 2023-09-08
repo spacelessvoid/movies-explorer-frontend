@@ -13,7 +13,7 @@ function SearchForm({
 
   const { isLoading, isError, setIsError } = useContext(AppContext);
 
-  const errorText = "Введите название фильма" //TODO Move all text strings to constants.js
+  const errorText = "Введите название фильма"; //TODO Move all text strings to constants.js
 
   function onChange(e) {
     setInput(e.target.value.toLowerCase());
@@ -48,6 +48,7 @@ function SearchForm({
       >
         <fieldset className="search__fieldset">
           <input
+            id="searchField"
             type="text"
             className={`search__input ${isError && "search__input-error"}`}
             placeholder={isError ? errorText : "Найти фильм"} //TODO
