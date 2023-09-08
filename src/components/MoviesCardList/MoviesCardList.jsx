@@ -52,7 +52,7 @@ function MoviesCardList({
         <p className="movies__result-text">Ничего не найдено</p>
       )}
 
-      {!isPathSavedMovies && isError && (
+      {!isPathSavedMovies && searchQuery && isError  && (
         <p className="movies__result-text">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз

@@ -29,7 +29,7 @@ function App() {
   const isPathRegistration = usePath(registration);
   const isPathLogin = usePath(login);
   const isPageNotFound = usePath("/404");
-  
+
   const isHeaderVisible = !(
     isPathRegistration ||
     isPathLogin ||
@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div className="page">
-      <AppContext.Provider value={{ isLoading, isError }}>
+      <AppContext.Provider value={{ isLoading, isError, setIsError }}>
         <CurrentUserContext.Provider value={currentUser}>
           {isHeaderVisible && <Header isLoggedIn={isLoggedIn} />}
 

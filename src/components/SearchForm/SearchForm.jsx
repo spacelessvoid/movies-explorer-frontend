@@ -1,36 +1,63 @@
-import { useState } from "react";
+import { useState, useContext, useRef } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import "./SearchForm.css";
 
 function SearchForm({
-  onSearchClick,
+  onSearchSubmit,
   setSearchQuery,
   toggleShortsFilter,
   isShorts,
 }) {
   const [input, setInput] = useState("");
+  const searchField = useRef(null);
+
+  const { isLoading, isError, setIsError } = useContext(AppContext);
+
+  const errorText = "Введите название фильма" //TODO Move all text strings to constants.js
 
   function onChange(e) {
     setInput(e.target.value.toLowerCase());
   }
 
-  function handleClick(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    onSearchClick();
+
+    setIsError(false);
+
+    if (!input) {
+      setIsError(true);
+
+      setTimeout(() => {
+        searchField.current.focus();
+      }, 1);
+
+      return;
+    }
+
+    onSearchSubmit();
     setSearchQuery(input);
   }
 
   return (
     <section className="search">
-      <form id="search" className="search__form" onSubmit={handleClick}>
+      <form
+        id="search"
+        className="search__form"
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <fieldset className="search__fieldset">
           <input
             type="text"
-            className="search__input"
-            placeholder="Найти фильм"
+            className={`search__input ${isError && "search__input-error"}`}
+            placeholder={isError ? errorText : "Найти фильм"} //TODO
             required
+            autoFocus
+            disabled={isLoading}
             value={input}
             checked={isShorts}
             onChange={onChange}
+            ref={searchField}
           />
           <button
             type="submit"

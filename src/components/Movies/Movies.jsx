@@ -84,7 +84,7 @@ function Movies({ moviesList, handleGetAllMovies }) {
   return (
     <main className="movies">
       <SearchForm
-        onSearchClick={handleGetAllMovies}
+        onSearchSubmit={handleGetAllMovies}
         setSearchQuery={setSearchQuery}
         toggleShortsFilter={toggleShortsFilter}
         isShorts={isShorts}

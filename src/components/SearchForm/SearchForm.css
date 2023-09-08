@@ -28,6 +28,10 @@
 	transition: outline .2s;
 }
 
+.search__input-error::placeholder {
+	font-style: italic;
+}
+
 .search__input:focus {
 	border-radius: 40px;
 	outline: 1px solid #4285F4;
