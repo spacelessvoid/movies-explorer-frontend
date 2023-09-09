@@ -69,6 +69,7 @@ function useMoviesFilter() {
       );
     } else return filteredMovieList;
   }
+
   return {
     filteredMovieList,
     setFilteredMovieList,

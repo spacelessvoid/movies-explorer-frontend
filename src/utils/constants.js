@@ -1,5 +1,6 @@
 const API_3P_BASE_URL = "https://api.nomoreparties.co";
-const API_BASE_URL = "https://api.spacemovies.nomoreparties.co";
+// const API_BASE_URL = "https://api.spacemovies.nomoreparties.co";
+const API_BASE_URL = "http://127.0.0.1:3003";
 
 const requestHeaders = {
   Accept: "application/json",
@@ -16,6 +17,6 @@ function sendRequest(endpoint, options) {
 export {
   API_3P_BASE_URL,
   API_BASE_URL,
-  requestHeaders,
-  sendRequest as headers,
+  requestHeaders as headers,
+  sendRequest,
 };

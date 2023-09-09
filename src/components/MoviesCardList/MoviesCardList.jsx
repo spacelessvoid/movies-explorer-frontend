@@ -13,6 +13,7 @@ function MoviesCardList({
   numberOfCards,
   morePage,
   handleIncrementMorePage,
+  handleSaveMovie,
 }) {
   const { isLoading, isError } = useContext(AppContext);
 
@@ -31,6 +32,7 @@ function MoviesCardList({
       key={movie.id}
       movie={movie}
       isPathSavedMovies={isPathSavedMovies}
+      handleSaveMovie={handleSaveMovie}
     />
   ));
 

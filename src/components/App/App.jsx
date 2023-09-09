@@ -3,6 +3,14 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import "./App.css";
+import { registerUser, authorizeUser, checkToken } from "../../utils/Auth";
+import {
+  getSavedMovies,
+  saveNewMovie,
+  deleteSavedMovie,
+  getUserInfo,
+  updateUserInfo,
+} from "../../utils/MainApi";
 import { getAllMovies } from "../../utils/MoviesApi";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
 import Header from "../Header/Header";
@@ -24,6 +32,7 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   const [moviesList, setMoviesList] = useState([]);
+  const [savedMoviesList, setSavedMoviesList] = useState([]);
 
   const isPathProfile = usePath(profile);
   const isPathRegistration = usePath(registration);
@@ -42,12 +51,17 @@ function App() {
     isPageNotFound
   );
 
-  function handleGetAllMovies() {
+  function setPreRequestStates() {
     setIsLoading(true);
     setIsError(false);
+  }
+
+  function handleGetAllMovies() {
+    setPreRequestStates();
+
     if (!moviesList.length) {
       getAllMovies()
-        .then(data => setMoviesList(data))
+        .then(movies => setMoviesList(movies))
         .catch(error => {
           setIsError(true);
           console.error(error);
@@ -56,6 +70,36 @@ function App() {
     } else {
       setIsLoading(false);
     }
+  }
+
+  function handleGetSavedMovies() {
+    setPreRequestStates();
+
+    if (!savedMoviesList.length) {
+      getSavedMovies()
+        .then(movies => setSavedMoviesList(movies))
+        .catch(error => {
+          setIsError(true);
+          console.error(error);
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
+    }
+  }
+
+  function handleSaveMovie(movieId) {
+    setPreRequestStates();
+
+    const movie = moviesList.find(movie => movie.id === movieId);
+
+    saveNewMovie(movie)
+      .then(newMovie => setSavedMoviesList([...savedMoviesList, newMovie]))
+      .catch(error => {
+        setIsError(true);
+        console.error(error);
+      })
+      .finally(() => setIsLoading(false));
   }
 
   return (
@@ -75,10 +119,19 @@ function App() {
                 <Movies
                   handleGetAllMovies={handleGetAllMovies}
                   moviesList={moviesList}
+                  handleSaveMovie={handleSaveMovie}
                 />
               }
             />
-            <Route path={saved} element={<SavedMovies />} />
+            <Route
+              path={saved}
+              element={
+                <SavedMovies
+                  handleGetSavedMovies={handleGetSavedMovies}
+                  moviesList={savedMoviesList}
+                />
+              }
+            />
             <Route
               path={profile}
               element={<Profile setIsLoggedIn={setIsLoggedIn} />}

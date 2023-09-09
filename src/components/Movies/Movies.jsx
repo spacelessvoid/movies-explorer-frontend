@@ -4,7 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import useMoviesFilter from "../../hooks/useMoviesFilter";
 
-function Movies({ moviesList, handleGetAllMovies }) {
+function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
   const {
     filteredMovieList,
     setFilteredMovieList,
@@ -66,6 +66,7 @@ function Movies({ moviesList, handleGetAllMovies }) {
         numberOfCards={numberOfCards}
         morePage={morePage}
         handleIncrementMorePage={incrementMorePage}
+        handleSaveMovie={handleSaveMovie}
       />
     </main>
   );

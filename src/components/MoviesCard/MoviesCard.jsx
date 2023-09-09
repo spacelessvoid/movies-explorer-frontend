@@ -3,14 +3,16 @@ import { useState } from "react";
 import { API_3P_BASE_URL } from "../../utils/constants";
 
 function MoviesCard({
-  movie: { nameRU: name, duration, trailerLink, image },
+  movie: { nameRU: name, duration, trailerLink, image, id },
   isPathSavedMovies,
+  handleSaveMovie,
 }) {
   //TODO For testing, remove after
   const [isFavorite, setIsFavorite] = useState(false);
 
   function handleAddFavClick() {
     setIsFavorite(!isFavorite);
+    handleSaveMovie();
   }
 
   //TODO Should be in parent component
