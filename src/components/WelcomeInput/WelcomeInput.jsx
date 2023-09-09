@@ -2,12 +2,15 @@ import "./WelcomeInput.css";
 
 function WelcomeInput({
   type,
+  name = type,
   labelText,
   value,
   placeholder,
+  minLength = null,
+  maxLength = null,
+  pattern = null,
   onChange,
-  minLength,
-  maxLength,
+  onBlur,
 }) {
   return (
     <>
@@ -17,14 +20,16 @@ function WelcomeInput({
       <input
         className="welcome__input"
         type={type}
-        name={type}
+        name={name}
         id={type}
-        value={value}
+        value={value ?? ""}
         placeholder={placeholder}
-        onChange={onChange}
-        required
         minLength={minLength}
         maxLength={maxLength}
+        pattern={pattern}
+        required
+        onChange={onChange}
+        onBlur={onBlur}
       />
     </>
   );

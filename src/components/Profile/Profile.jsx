@@ -40,7 +40,7 @@ function Profile({
     <main className="profile">
       <h1 className="profile__title">Привет, {username}!</h1>
       <section>
-        <form className="profile__form">
+        <form className="profile__form" noValidate>
           <fieldset className="profile__fieldset">
             <label htmlFor="name" className="profile__label">
               Имя

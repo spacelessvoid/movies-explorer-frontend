@@ -56,6 +56,10 @@ function App() {
     setIsError(false);
   }
 
+  function handleRegistration(input) {}
+
+  function handleAuthorization(input) {}
+
   function handleGetAllMovies() {
     setPreRequestStates();
 
@@ -110,8 +114,14 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path={registration} element={<Register />} />
-            <Route path={login} element={<Login />} />
+            <Route
+              path={registration}
+              element={<Register handleRegistration={handleRegistration} />}
+            />
+            <Route
+              path={login}
+              element={<Login handleAuthorization={handleAuthorization} />}
+            />
 
             <Route
               path={movies}

@@ -21,6 +21,10 @@
 	outline: 2px solid var(--clr-accent);
 }
 
+/* .welcome__input:invalid {
+	background-color: hsl(0, 15%, 25%);
+} */
+
 .welcome__input-error {
 	color: #EE3465;
 }
