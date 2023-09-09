@@ -96,6 +96,29 @@ function App() {
     setCurrentUser({ name, email });
   }
 
+  function handleCheckToken() {
+    setPreRequestStates();
+
+    const jwt = localStorage.getItem("jwt");
+
+    if (jwt) {
+      checkToken(jwt)
+        .then(user => handleLogin(user))
+        .catch(error => {
+          setIsError(true);
+          console.error(error);
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
+    }
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+  }
+
   function handleGetAllMovies() {
     setPreRequestStates();
 
@@ -141,6 +164,10 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   }
+
+  useEffect(() => {
+    handleCheckToken();
+  }, []);
 
   return (
     <div className="page">
