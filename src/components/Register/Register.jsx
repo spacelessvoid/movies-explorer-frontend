@@ -8,7 +8,11 @@ function Register({ handleRegistration }) {
   const { inputValues, isValid, errorMessage, handleChange, handleValidation } =
     useForm();
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    handleRegistration(inputValues);
+  }
 
   return (
     <WelcomeContent

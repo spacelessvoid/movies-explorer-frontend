@@ -13,7 +13,7 @@ function registerUser(name, email, password) {
   });
 }
 
-function authorizeUser(email, password) {
+function authenticateUser(email, password) {
   return sendRequest(LOGIN_ENDPOINT, {
     method: "POST",
     headers,
@@ -28,4 +28,4 @@ function checkToken(token) {
   });
 }
 
-export { registerUser, authorizeUser, checkToken };
+export { registerUser, authenticateUser, checkToken };

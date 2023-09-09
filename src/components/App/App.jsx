@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import "./App.css";
-import { registerUser, authorizeUser, checkToken } from "../../utils/Auth";
+import { registerUser, authenticateUser, checkToken } from "../../utils/Auth";
 import {
   getSavedMovies,
   saveNewMovie,
@@ -26,13 +26,15 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const [moviesList, setMoviesList] = useState([]);
   const [savedMoviesList, setSavedMoviesList] = useState([]);
+
+  const navigate = useNavigate();
 
   const isPathProfile = usePath(profile);
   const isPathRegistration = usePath(registration);
@@ -56,9 +58,43 @@ function App() {
     setIsError(false);
   }
 
-  function handleRegistration(input) {}
+  function handleRegistration({ name, email, password }) {
+    setPreRequestStates();
 
-  function handleAuthorization(input) {}
+    registerUser(name, email, password)
+      .then(() => handleUserAuthentication({ email, password }))
+      .catch(error => {
+        setIsError(true);
+        console.error(error);
+      })
+      .finally(() => setIsLoading(false));
+  }
+
+  function handleAuthorization({ email, password }) {
+    setPreRequestStates();
+
+    handleUserAuthentication({ email, password })
+      .catch(error => {
+        setIsError(true);
+        console.error(error);
+      })
+      .finally(() => setIsLoading(false));
+  }
+
+  function handleUserAuthentication({ email, password }) {
+    return authenticateUser(email, password).then(data => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        handleLogin(data);
+        navigate(movies, { replace: true });
+      }
+    });
+  }
+
+  function handleLogin({ name, email }) {
+    setIsLoggedIn(true);
+    setCurrentUser({ name, email });
+  }
 
   function handleGetAllMovies() {
     setPreRequestStates();

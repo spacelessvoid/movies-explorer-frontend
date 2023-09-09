@@ -8,10 +8,11 @@ function Login({ handleAuthorization }) {
   const { inputValues, isValid, errorMessage, handleChange, handleValidation } =
     useForm();
 
-  function handleAuthorization() {}
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  function handleSubmit() {}
-
+    handleAuthorization(inputValues);
+  }
   return (
     <WelcomeContent
       title={"Рады видеть!"}
