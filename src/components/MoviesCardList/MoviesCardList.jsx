@@ -7,6 +7,7 @@ import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList({
+  savedMoviesList,
   filteredMovieList,
   renderMovies,
   searchQuery,
@@ -14,6 +15,7 @@ function MoviesCardList({
   morePage,
   handleIncrementMorePage,
   handleSaveMovie,
+  handleDeleteMovie,
 }) {
   const { isLoading, isError } = useContext(AppContext);
 
@@ -27,12 +29,21 @@ function MoviesCardList({
       (initialCards === 5 && filteredMovieList.length > 5)) &&
     !(initialCards + additionalCards * morePage >= filteredMovieList.length);
 
+  function checkIsSaved(movie) {
+    if (!isPathSavedMovies) {
+      const isSaved = savedMoviesList.some(sm => sm.movieId === movie.id);
+      return isSaved;
+    } else return true;
+  }
+
   const renderedCards = renderMovies().map(movie => (
     <MoviesCard
-      key={movie.id}
+      key={movie.id ?? movie._id}
       movie={movie}
+      saved={checkIsSaved(movie)}
       isPathSavedMovies={isPathSavedMovies}
       handleSaveMovie={handleSaveMovie}
+      handleDeleteMovie={handleDeleteMovie}
     />
   ));
 

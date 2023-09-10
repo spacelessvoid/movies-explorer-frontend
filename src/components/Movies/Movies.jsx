@@ -4,7 +4,13 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import useMoviesFilter from "../../hooks/useMoviesFilter";
 
-function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
+function Movies({
+  moviesList,
+  savedMoviesList,
+  handleGetAllMovies,
+  handleSaveMovie,
+  handleDeleteMovie,
+}) {
   const {
     filteredMovieList,
     setFilteredMovieList,
@@ -20,8 +26,6 @@ function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
     filterMovies,
     renderMovies,
   } = useMoviesFilter();
-
-  // console.log(numberOfCards);
 
   useEffect(() => {
     setContentWidth();
@@ -45,7 +49,7 @@ function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
 
   useEffect(() => {
     setFilteredMovieList(filterMovies(moviesList));
-  }, [moviesList, searchQuery, isShorts]);
+  }, [savedMoviesList, searchQuery, isShorts]);
 
   useEffect(() => {
     setMorePage(0);
@@ -60,6 +64,7 @@ function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
         isShorts={isShorts}
       />
       <MoviesCardList
+        savedMoviesList={savedMoviesList}
         filteredMovieList={filteredMovieList}
         renderMovies={renderMovies}
         searchQuery={searchQuery}
@@ -67,6 +72,7 @@ function Movies({ moviesList, handleGetAllMovies, handleSaveMovie }) {
         morePage={morePage}
         handleIncrementMorePage={incrementMorePage}
         handleSaveMovie={handleSaveMovie}
+        handleDeleteMovie={handleDeleteMovie}
       />
     </main>
   );

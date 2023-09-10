@@ -52,11 +52,11 @@
 	background-image: url('../../images/btn-remove.svg');
 }
 
-.card__fav-btn {
+.card[data-saved="false"] .card__fav-btn {
 	background-image: url('../../images/btn-save.svg');
 }
 
-.card__fav-btn_active {
+.card[data-saved="true"] .card__fav-btn {
 	background-image: url('../../images/btn-save-active.svg');
 	animation: like-pop .4s ease-in-out;
 }

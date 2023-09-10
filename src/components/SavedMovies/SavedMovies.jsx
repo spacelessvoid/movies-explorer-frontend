@@ -4,7 +4,11 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import useMoviesFilter from "../../hooks/useMoviesFilter";
 
-function SavedMovies({ moviesList, handleGetSavedMovies }) {
+function SavedMovies({
+  savedMoviesList,
+  handleGetSavedMovies,
+  handleDeleteMovie,
+}) {
   const {
     filteredMovieList,
     setFilteredMovieList,
@@ -16,11 +20,9 @@ function SavedMovies({ moviesList, handleGetSavedMovies }) {
     filterMovies,
   } = useMoviesFilter();
 
-  // console.log(numberOfCards);
-
   useEffect(() => {
-    setFilteredMovieList(filterMovies(moviesList));
-  }, [moviesList, searchQuery, isShorts]);
+    setFilteredMovieList(filterMovies(savedMoviesList));
+  }, [savedMoviesList, searchQuery, isShorts]);
 
   const renderMovies = () => filteredMovieList;
 
@@ -33,10 +35,12 @@ function SavedMovies({ moviesList, handleGetSavedMovies }) {
         isShorts={isShorts}
       />
       <MoviesCardList
+        savedMoviesList={savedMoviesList}
         filteredMovieList={filteredMovieList}
         renderMovies={renderMovies}
         searchQuery={searchQuery}
         numberOfCards={numberOfCards}
+        handleDeleteMovie={handleDeleteMovie}
       />
     </main>
   );

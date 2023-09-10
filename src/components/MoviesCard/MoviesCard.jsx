@@ -1,46 +1,49 @@
-import "./MoviesCard.css";
 import { useState } from "react";
+import "./MoviesCard.css";
 import { API_3P_BASE_URL } from "../../utils/constants";
 
 function MoviesCard({
-  movie: { nameRU: name, duration, trailerLink, image, id },
+  movie: { nameRU: name, duration, trailerLink, image, id = null, movieId },
+  saved,
   isPathSavedMovies,
   handleSaveMovie,
+  handleDeleteMovie,
 }) {
-  //TODO For testing, remove after
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isSaved, setIsSaved] = useState(saved);
 
-  function handleAddFavClick() {
-    setIsFavorite(!isFavorite);
-    handleSaveMovie();
-  }
-
-  //TODO Should be in parent component
-  // const isFavorite = owner.some();
+  const cardImage = isPathSavedMovies ? image : API_3P_BASE_URL + image.url;
 
   const cardButtonClassName = isPathSavedMovies
     ? `button card__btn card__del-btn`
-    : `button card__btn card__fav-btn ${isFavorite && "card__fav-btn_active"}`;
+    : `button card__btn card__fav-btn`;
 
   const cardButtonAriaLabel = isPathSavedMovies
     ? "Удалить из избранного"
     : "Добавить в избранное";
 
-  function durationConvert(t) {
+  function handleLikeButtonClick() {
+    if (!isSaved && !isPathSavedMovies)
+      Promise.resolve(handleSaveMovie(id)).then(() => setIsSaved(true));
+
+    if (isSaved)
+      Promise.resolve(handleDeleteMovie(id ?? movieId)).then(() =>
+        setIsSaved(false),
+      );
+  }
+
+  function convertDuration(t) {
     const hours = Math.floor(t / 60);
     const minutes = t % 60;
 
-    return `${hours}ч ${minutes}м`;
+    let duration = hours < 1 ? `${minutes}м` : `${hours}ч ${minutes}м`;
+
+    return duration;
   }
 
   return (
-    <article className="card">
+    <article className="card" data-saved={isSaved}>
       <a href={trailerLink} target="blank">
-        <img
-          src={API_3P_BASE_URL + image.url}
-          alt={name}
-          className="card__image"
-        />
+        <img src={cardImage} alt={name} className="card__image" />
       </a>
       <div className="card__info">
         <div className="card__wrapper">
@@ -49,10 +52,10 @@ function MoviesCard({
             className={cardButtonClassName}
             type="button"
             aria-label={cardButtonAriaLabel}
-            onClick={handleAddFavClick}
+            onClick={handleLikeButtonClick}
           />
         </div>
-        <p className="card__duration">{durationConvert(duration)}</p>
+        <p className="card__duration">{convertDuration(duration)}</p>
       </div>
     </article>
   );

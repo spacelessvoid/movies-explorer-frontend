@@ -5,7 +5,7 @@ import { NAME_REGEX, EMAIL_REGEX } from "../../utils/constants";
 import DefaultFormButton from "../DefaultFormButton/DefaultFormButton";
 import useForm from "../../hooks/useForm";
 
-function Profile({ handleUpdateUserInfo, handleSignOut }) {
+function Profile({ handleUpdateUserInfo, handleLogOut }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [isDisabled, setIsDisabled] = useState(true);
@@ -14,15 +14,12 @@ function Profile({ handleUpdateUserInfo, handleSignOut }) {
     inputValues,
     setInputValues,
     isValid,
-    errorMessage,
     handleChange,
     handleValidation,
   } = useForm(currentUser);
 
   const isSubmitButtonDisabled =
     JSON.stringify(inputValues) === JSON.stringify(currentUser) || !isValid;
-
-  // console.log(isSubmitButtonDisabled);
 
   function handleEnableEditing(e) {
     e.preventDefault();
@@ -101,7 +98,7 @@ function Profile({ handleUpdateUserInfo, handleSignOut }) {
               <button
                 className="button profile__button profile__button_type_logout"
                 type="button"
-                onClick={handleSignOut}
+                onClick={handleLogOut}
               >
                 Выйти из аккаунта
               </button>

@@ -90,14 +90,9 @@ function App() {
         }
       })
       .then(user => {
-        handleLogin(user);
+        handleLogIn(user);
         navigate(movies, { replace: true });
       });
-  }
-
-  function handleLogin(user) {
-    setIsLoggedIn(true);
-    setCurrentUser(user);
   }
 
   function handleCheckToken() {
@@ -107,7 +102,7 @@ function App() {
 
     if (jwt) {
       checkToken(jwt)
-        .then(user => handleLogin(user))
+        .then(user => handleLogIn(user))
         .catch(error => {
           setIsError(true);
           console.error(error);
@@ -118,9 +113,16 @@ function App() {
     }
   }
 
-  function handleSignOut() {
+  function handleLogIn(user) {
+    setIsLoggedIn(true);
+    setCurrentUser(user);
+  }
+
+  function handleLogOut() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setMoviesList([]);
+    setSavedMoviesList([]);
     navigate("/");
   }
 
@@ -130,6 +132,13 @@ function App() {
     if (!moviesList.length) {
       getAllMovies()
         .then(movies => setMoviesList(movies))
+        .then(() => {
+          if (!savedMoviesList.length) {
+            getSavedMovies().then(savedMovies =>
+              setSavedMoviesList(savedMovies),
+            );
+          }
+        })
         .catch(error => {
           setIsError(true);
           console.error(error);
@@ -139,13 +148,17 @@ function App() {
       setIsLoading(false);
     }
   }
-
+  //TODO filter by owner
   function handleGetSavedMovies() {
     setPreRequestStates();
 
     if (!savedMoviesList.length) {
       getSavedMovies()
-        .then(movies => setSavedMoviesList(movies))
+        .then(movies =>
+          setSavedMoviesList(() =>
+            movies.filter(movie => movie.owner === currentUser._id),
+          ),
+        )
         .catch(error => {
           setIsError(true);
           console.error(error);
@@ -157,7 +170,7 @@ function App() {
   }
 
   function handleSaveMovie(movieId) {
-    setPreRequestStates();
+    setIsError(false);
 
     const movie = moviesList.find(movie => movie.id === movieId);
 
@@ -166,8 +179,28 @@ function App() {
       .catch(error => {
         setIsError(true);
         console.error(error);
-      })
-      .finally(() => setIsLoading(false));
+      });
+  }
+
+  function handleDeleteMovie(movieId) {
+    setIsError(false);
+
+    const savedMovie = savedMoviesList.find(
+      savedMovie => savedMovie.movieId === movieId,
+    );
+
+    deleteSavedMovie(savedMovie._id)
+      .then(deletedMovie =>
+        setSavedMoviesList(() =>
+          savedMoviesList.filter(
+            movie => movie.movieId !== deletedMovie.movieId,
+          ),
+        ),
+      )
+      .catch(error => {
+        setIsError(true);
+        console.error(error);
+      });
   }
 
   function handleUpdateUserInfo(input) {
@@ -209,7 +242,9 @@ function App() {
                 <Movies
                   handleGetAllMovies={handleGetAllMovies}
                   moviesList={moviesList}
+                  savedMoviesList={savedMoviesList}
                   handleSaveMovie={handleSaveMovie}
+                  handleDeleteMovie={handleDeleteMovie}
                 />
               }
             />
@@ -218,7 +253,8 @@ function App() {
               element={
                 <SavedMovies
                   handleGetSavedMovies={handleGetSavedMovies}
-                  moviesList={savedMoviesList}
+                  savedMoviesList={savedMoviesList}
+                  handleDeleteMovie={handleDeleteMovie}
                 />
               }
             />
@@ -227,7 +263,7 @@ function App() {
               element={
                 <Profile
                   handleUpdateUserInfo={handleUpdateUserInfo}
-                  handleSignOut={handleSignOut}
+                  handleLogOut={handleLogOut}
                 />
               }
             />
