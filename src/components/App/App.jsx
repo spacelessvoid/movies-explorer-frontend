@@ -82,18 +82,22 @@ function App() {
   }
 
   function handleUserAuthentication({ email, password }) {
-    return authenticateUser(email, password).then(data => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        handleLogin(data);
+    return authenticateUser(email, password)
+      .then(data => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          return checkToken(data.token);
+        }
+      })
+      .then(user => {
+        handleLogin(user);
         navigate(movies, { replace: true });
-      }
-    });
+      });
   }
 
-  function handleLogin({ name, email }) {
+  function handleLogin(user) {
     setIsLoggedIn(true);
-    setCurrentUser({ name, email });
+    setCurrentUser(user);
   }
 
   function handleCheckToken() {
@@ -117,6 +121,7 @@ function App() {
   function handleSignOut() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    navigate("/");
   }
 
   function handleGetAllMovies() {
@@ -158,6 +163,18 @@ function App() {
 
     saveNewMovie(movie)
       .then(newMovie => setSavedMoviesList([...savedMoviesList, newMovie]))
+      .catch(error => {
+        setIsError(true);
+        console.error(error);
+      })
+      .finally(() => setIsLoading(false));
+  }
+
+  function handleUpdateUserInfo(input) {
+    setPreRequestStates();
+
+    updateUserInfo(input)
+      .then(user => setCurrentUser(user))
       .catch(error => {
         setIsError(true);
         console.error(error);
@@ -207,7 +224,12 @@ function App() {
             />
             <Route
               path={profile}
-              element={<Profile setIsLoggedIn={setIsLoggedIn} />}
+              element={
+                <Profile
+                  handleUpdateUserInfo={handleUpdateUserInfo}
+                  handleSignOut={handleSignOut}
+                />
+              }
             />
 
             <Route path="*" element={<Navigate to="/404" replace />} />

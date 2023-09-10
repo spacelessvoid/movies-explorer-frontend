@@ -22,24 +22,14 @@ function deleteSavedMovie(movieID) {
   });
 }
 
-function getUserInfo() {
-  return sendRequest(USER_ENDPOINT, {
-    headers,
-  });
-}
-
 function updateUserInfo({ name, email }) {
+  const token = localStorage.getItem("jwt");
+
   return sendRequest(USER_ENDPOINT, {
     method: "PATCH",
-    headers,
+    headers: { ...headers, Authorization: `Bearer ${token}` },
     body: JSON.stringify({ name, email }),
   });
 }
 
-export {
-  getSavedMovies,
-  saveNewMovie,
-  deleteSavedMovie,
-  getUserInfo,
-  updateUserInfo,
-};
+export { getSavedMovies, saveNewMovie, deleteSavedMovie, updateUserInfo };

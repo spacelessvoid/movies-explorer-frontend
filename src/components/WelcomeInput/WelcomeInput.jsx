@@ -21,7 +21,7 @@ function WelcomeInput({
         className="welcome__input"
         type={type}
         name={name}
-        id={type}
+        id={name}
         value={value ?? ""}
         placeholder={placeholder}
         minLength={minLength}
