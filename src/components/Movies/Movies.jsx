@@ -66,7 +66,7 @@ function Movies({
       <MoviesCardList
         savedMoviesList={savedMoviesList}
         filteredMovieList={filteredMovieList}
-        renderMovies={renderMovies}
+        renderedMovies={renderMovies()}
         searchQuery={searchQuery}
         numberOfCards={numberOfCards}
         morePage={morePage}

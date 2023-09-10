@@ -9,7 +9,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList({
   savedMoviesList,
   filteredMovieList,
-  renderMovies,
+  renderedMovies,
   searchQuery,
   numberOfCards,
   morePage,
@@ -36,7 +36,7 @@ function MoviesCardList({
     } else return true;
   }
 
-  const renderedCards = renderMovies().map(movie => (
+  const renderedCards = renderedMovies.map(movie => (
     <MoviesCard
       key={movie.id ?? movie._id}
       movie={movie}
@@ -46,6 +46,8 @@ function MoviesCardList({
       handleDeleteMovie={handleDeleteMovie}
     />
   ));
+
+  console.log('MoviesCardList mounts', filteredMovieList);
 
   return (
     <section className="movies__list">

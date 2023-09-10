@@ -24,7 +24,9 @@ function SavedMovies({
     setFilteredMovieList(filterMovies(savedMoviesList));
   }, [savedMoviesList, searchQuery, isShorts]);
 
-  const renderMovies = () => filteredMovieList;
+  useEffect(() => {
+    setFilteredMovieList([]);
+  }, []);
 
   return (
     <main className="movies">
@@ -37,7 +39,7 @@ function SavedMovies({
       <MoviesCardList
         savedMoviesList={savedMoviesList}
         filteredMovieList={filteredMovieList}
-        renderMovies={renderMovies}
+        renderedMovies={filteredMovieList}
         searchQuery={searchQuery}
         numberOfCards={numberOfCards}
         handleDeleteMovie={handleDeleteMovie}
