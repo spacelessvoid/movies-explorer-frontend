@@ -134,9 +134,7 @@ function App() {
         .then(() => {
           if (!savedMoviesList.length) {
             getSavedMovies().then(savedMovies =>
-              setSavedMoviesList(() =>
-                savedMovies.filter(sm => sm.owner === currentUser._id),
-              ),
+              setSavedMoviesList(savedMovies),
             );
           }
         })
@@ -152,11 +150,7 @@ function App() {
 
     if (!savedMoviesList.length) {
       getSavedMovies()
-        .then(movies =>
-          setSavedMoviesList(() =>
-            movies.filter(movie => movie.owner === currentUser._id),
-          ),
-        )
+        .then(movies => setSavedMoviesList(movies))
         .catch(error => processErrorCatch(error))
         .finally(() => setIsLoading(false));
     } else {
