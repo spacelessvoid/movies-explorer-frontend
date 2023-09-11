@@ -47,8 +47,6 @@ function MoviesCardList({
     />
   ));
 
-  console.log('MoviesCardList mounts', filteredMovieList);
-
   return (
     <section className="movies__list">
       {isLoading ? <Preloader /> : renderedCards}

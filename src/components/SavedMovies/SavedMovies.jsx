@@ -20,13 +20,16 @@ function SavedMovies({
     filterMovies,
   } = useMoviesFilter();
 
+  //TODO fix weird behavior
+  useEffect(() => {
+    if (!savedMoviesList.length) {
+      handleGetSavedMovies();
+    }
+  }, []);
+
   useEffect(() => {
     setFilteredMovieList(filterMovies(savedMoviesList));
   }, [savedMoviesList, searchQuery, isShorts]);
-
-  useEffect(() => {
-    setFilteredMovieList([]);
-  }, []);
 
   return (
     <main className="movies">

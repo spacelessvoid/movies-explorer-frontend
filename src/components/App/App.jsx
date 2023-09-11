@@ -135,7 +135,9 @@ function App() {
         .then(() => {
           if (!savedMoviesList.length) {
             getSavedMovies().then(savedMovies =>
-              setSavedMoviesList(savedMovies),
+              setSavedMoviesList(() =>
+                savedMovies.filter(sm => sm.owner === currentUser._id),
+              ),
             );
           }
         })
@@ -148,7 +150,7 @@ function App() {
       setIsLoading(false);
     }
   }
-  //TODO filter by owner
+
   function handleGetSavedMovies() {
     setPreRequestStates();
 
