@@ -29,6 +29,7 @@ import usePath from "../../hooks/usePath";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -243,17 +244,33 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route
               path={registration}
-              element={<Register handleRegistration={handleRegistration} />}
+              element={
+                <ProtectedRoute
+                  element={Register}
+                  isLoggedIn={!isLoggedIn}
+                  navigate="/"
+                  handleRegistration={handleRegistration}
+                />
+              }
             />
             <Route
               path={login}
-              element={<Login handleAuthorization={handleAuthorization} />}
+              element={
+                <ProtectedRoute
+                  element={Login}
+                  isLoggedIn={!isLoggedIn}
+                  navigate="/"
+                  handleAuthorization={handleAuthorization}
+                />
+              }
             />
 
             <Route
               path={movies}
               element={
-                <Movies
+                <ProtectedRoute
+                  element={Movies}
+                  isLoggedIn={isLoggedIn}
                   handleGetAllMovies={handleGetAllMovies}
                   moviesList={moviesList}
                   savedMoviesList={savedMoviesList}
@@ -265,7 +282,9 @@ function App() {
             <Route
               path={saved}
               element={
-                <SavedMovies
+                <ProtectedRoute
+                  element={SavedMovies}
+                  isLoggedIn={isLoggedIn}
                   handleGetSavedMovies={handleGetSavedMovies}
                   savedMoviesList={savedMoviesList}
                   handleDeleteMovie={handleDeleteMovie}
@@ -275,7 +294,9 @@ function App() {
             <Route
               path={profile}
               element={
-                <Profile
+                <ProtectedRoute
+                  element={Profile}
+                  isLoggedIn={isLoggedIn}
                   handleUpdateUserInfo={handleUpdateUserInfo}
                   handleLogOut={handleLogOut}
                 />
