@@ -36,6 +36,7 @@ function Register({ handleRegistration }) {
         value={inputValues.name}
         onChange={handleChange}
         onBlur={handleValidation}
+        isValid={isValid}
       />
       <WelcomeInput
         type={"email"}
@@ -45,6 +46,7 @@ function Register({ handleRegistration }) {
         value={inputValues.email}
         onChange={handleChange}
         onBlur={handleValidation}
+        isValid={isValid}
       />
       <WelcomeInput
         type={"password"}
@@ -54,6 +56,7 @@ function Register({ handleRegistration }) {
         value={inputValues.password}
         onChange={handleChange}
         onBlur={handleValidation}
+        isValid={isValid}
       />
     </WelcomeContent>
   );

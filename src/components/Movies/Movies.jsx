@@ -29,10 +29,6 @@ function Movies({
     renderMovies,
   } = useMoviesFilter();
 
-  function onSearchSubmit() {
-    handleGetAllMovies();
-  }
-
   useEffect(() => {
     setContentWidth();
 
@@ -86,7 +82,7 @@ function Movies({
   return (
     <main className="movies">
       <SearchForm
-        onSearchSubmit={onSearchSubmit}
+        onSearchSubmit={handleGetAllMovies}
         setSearchQuery={setSearchQuery}
         toggleShortsFilter={toggleShortsFilter}
         isShorts={isShorts}

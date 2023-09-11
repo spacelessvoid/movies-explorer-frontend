@@ -1,5 +1,7 @@
-import "./WelcomeContent.css";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 import { Link } from "react-router-dom";
+import "./WelcomeContent.css";
 import Logo from "../Logo/Logo";
 import DefaultFormButton from "../DefaultFormButton/DefaultFormButton";
 
@@ -14,6 +16,8 @@ function WelcomeContent({
   isButtonDisabled,
   onSubmit,
 }) {
+  const { isLoading } = useContext(AppContext);
+
   return (
     <main className="welcome">
       <section className="welcome__content">
@@ -25,6 +29,7 @@ function WelcomeContent({
           className="welcome__form"
           noValidate
           onSubmit={onSubmit}
+          disabled={!isLoading}
         >
           {children}
           <p

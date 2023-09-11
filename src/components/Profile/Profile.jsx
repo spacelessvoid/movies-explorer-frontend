@@ -1,12 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./Profile.css";
-import { NAME_REGEX, EMAIL_REGEX } from "../../utils/constants";
+import {
+  NAME_REGEX,
+  EMAIL_REGEX,
+  MSG_PROFILE_UPDATE_SUCCESS,
+} from "../../utils/constants";
 import DefaultFormButton from "../DefaultFormButton/DefaultFormButton";
 import useForm from "../../hooks/useForm";
+import { AppContext } from "../../contexts/AppContext";
 
 function Profile({ handleUpdateUserInfo, handleLogOut }) {
   const currentUser = useContext(CurrentUserContext);
+  const { isLoading, resultSuccess, setResultSuccess } = useContext(AppContext);
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -36,18 +42,25 @@ function Profile({ handleUpdateUserInfo, handleLogOut }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(inputValues);
-
     handleUpdateUserInfo(inputValues);
 
     setIsDisabled(true);
   }
 
+  useEffect(() => {
+    setResultSuccess(false);
+  }, []);
+
   return (
     <main className="profile">
       <h1 className="profile__title">Привет, {currentUser?.name}!</h1>
       <section>
-        <form className="profile__form" noValidate onSubmit={handleSubmit}>
+        <form
+          className="profile__form"
+          disabled={!isLoading}
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <fieldset className="profile__fieldset">
             <label htmlFor="name" className="profile__label">
               Имя
@@ -86,6 +99,9 @@ function Profile({ handleUpdateUserInfo, handleLogOut }) {
               onBlur={handleValidation}
             />
           </fieldset>
+          <p className="profile__update" data-visible={resultSuccess}>
+            {MSG_PROFILE_UPDATE_SUCCESS}
+          </p>
           {isDisabled ? (
             <>
               <button

@@ -27,6 +27,16 @@ const LS_SEARCH_QUERY = "storageSearchQuery",
   LS_FILTERED_MOVIES = "storageFilteredMovies",
   LS_IS_SHORTS = "storageIsShorts";
 
+// Messages
+
+const MSG_PROFILE_UPDATE_SUCCESS = "Обновленные данные сохранены";
+
+// Errors
+const ERROR_INVALID_REG_DATA = "При регистрации пользователя произошла ошибка.",
+  ERROR_INVALID_AUTH_DATA = "Вы ввели неправильный логин или пароль.",
+  ERROR_EMAIL_EXISTS = "Пользователь с таким email уже существует.",
+  ERROR_INTERNAL_SERVER = "500 На сервере произошла ошибка.";
+
 export {
   API_3P_BASE_URL,
   API_BASE_URL,
@@ -37,4 +47,9 @@ export {
   LS_SEARCH_QUERY,
   LS_FILTERED_MOVIES,
   LS_IS_SHORTS,
+  MSG_PROFILE_UPDATE_SUCCESS,
+  ERROR_INVALID_REG_DATA,
+  ERROR_INVALID_AUTH_DATA,
+  ERROR_EMAIL_EXISTS,
+  ERROR_INTERNAL_SERVER
 };

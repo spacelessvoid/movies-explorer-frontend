@@ -13,6 +13,12 @@ import {
 } from "../../utils/MainApi";
 import { getAllMovies } from "../../utils/MoviesApi";
 import { profile, movies, saved, login, registration } from "../../utils/paths";
+import {
+  ERROR_INVALID_REG_DATA,
+  ERROR_INVALID_AUTH_DATA,
+  ERROR_EMAIL_EXISTS,
+  ERROR_INTERNAL_SERVER,
+} from "../../utils/constants";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -30,6 +36,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [resultSuccess, setResultSuccess] = useState(false);
 
   const [moviesList, setMoviesList] = useState([]);
   const [savedMoviesList, setSavedMoviesList] = useState([]);
@@ -63,10 +70,7 @@ function App() {
 
     registerUser(name, email, password)
       .then(() => handleUserAuthentication({ email, password }))
-      .catch(error => {
-        setIsError(true);
-        console.error(error);
-      })
+      .catch(error => processErrorCatch(error))
       .finally(() => setIsLoading(false));
   }
 
@@ -74,10 +78,7 @@ function App() {
     setPreRequestStates();
 
     handleUserAuthentication({ email, password })
-      .catch(error => {
-        setIsError(true);
-        console.error(error);
-      })
+      .catch(error => processErrorCatch(error))
       .finally(() => setIsLoading(false));
   }
 
@@ -103,10 +104,7 @@ function App() {
     if (jwt) {
       checkToken(jwt)
         .then(user => handleLogIn(user))
-        .catch(error => {
-          setIsError(true);
-          console.error(error);
-        })
+        .catch(error => processErrorCatch(error))
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
@@ -141,10 +139,7 @@ function App() {
             );
           }
         })
-        .catch(error => {
-          setIsError(true);
-          console.error(error);
-        })
+        .catch(error => processErrorCatch(error))
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
@@ -161,10 +156,7 @@ function App() {
             movies.filter(movie => movie.owner === currentUser._id),
           ),
         )
-        .catch(error => {
-          setIsError(true);
-          console.error(error);
-        })
+        .catch(error => processErrorCatch(error))
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
@@ -178,10 +170,7 @@ function App() {
 
     saveNewMovie(movie)
       .then(newMovie => setSavedMoviesList([...savedMoviesList, newMovie]))
-      .catch(error => {
-        setIsError(true);
-        console.error(error);
-      });
+      .catch(error => processErrorCatch(error));
   }
 
   function handleDeleteMovie(movieId) {
@@ -199,10 +188,7 @@ function App() {
           ),
         ),
       )
-      .catch(error => {
-        setIsError(true);
-        console.error(error);
-      });
+      .catch(error => processErrorCatch(error));
   }
 
   function handleUpdateUserInfo(input) {
@@ -210,11 +196,29 @@ function App() {
 
     updateUserInfo(input)
       .then(user => setCurrentUser(user))
-      .catch(error => {
-        setIsError(true);
-        console.error(error);
-      })
-      .finally(() => setIsLoading(false));
+      .then(() => setResultSuccess(true))
+      .catch(error => processErrorCatch(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  function processErrorCatch(error, message = "") {
+    setIsError(true);
+    setResultSuccess(message);
+    if (error === 400) {
+      console.log(ERROR_INVALID_REG_DATA);
+    } else if (error === 401) {
+      console.log(ERROR_INVALID_AUTH_DATA);
+    } else if (error === 403) {
+      console.log(ERROR_INVALID_AUTH_DATA);
+    } else if (error === 409) {
+      console.log(ERROR_EMAIL_EXISTS);
+    } else if (error === 500) {
+      console.log(ERROR_INTERNAL_SERVER);
+    } else {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
@@ -223,7 +227,15 @@ function App() {
 
   return (
     <div className="page">
-      <AppContext.Provider value={{ isLoading, isError, setIsError }}>
+      <AppContext.Provider
+        value={{
+          isLoading,
+          isError,
+          setIsError,
+          resultSuccess,
+          setResultSuccess,
+        }}
+      >
         <CurrentUserContext.Provider value={currentUser}>
           {isHeaderVisible && <Header isLoggedIn={isLoggedIn} />}
 
