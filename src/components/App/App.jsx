@@ -119,7 +119,7 @@ function App() {
   }
 
   function handleLogOut() {
-    localStorage.removeItem("jwt");
+    localStorage.clear();
     setIsLoggedIn(false);
     setMoviesList([]);
     setSavedMoviesList([]);

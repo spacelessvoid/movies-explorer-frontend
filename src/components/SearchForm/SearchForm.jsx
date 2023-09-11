@@ -1,6 +1,9 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import "./SearchForm.css";
+import { LS_IS_SHORTS, LS_SEARCH_QUERY } from "../../utils/constants";
+import { saved } from "../../utils/paths";
+import usePath from "../../hooks/usePath";
 
 function SearchForm({
   onSearchSubmit,
@@ -9,14 +12,20 @@ function SearchForm({
   isShorts,
 }) {
   const [input, setInput] = useState("");
-  const searchField = useRef(null);
 
   const { isLoading, isError, setIsError } = useContext(AppContext);
+
+  const isPathSavedMovies = usePath(saved);
 
   const errorText = "Введите название фильма"; //TODO Move all text strings to constants.js
 
   function onChange(e) {
     setInput(e.target.value.toLowerCase());
+  }
+
+  function onCheckboxToggle() {
+    if (!isPathSavedMovies) localStorage.setItem(LS_IS_SHORTS, !isShorts);
+    toggleShortsFilter();
   }
 
   function handleSubmit(e) {
@@ -28,15 +37,24 @@ function SearchForm({
       setIsError(true);
 
       setTimeout(() => {
-        searchField.current.focus();
-      }, 1);
+        document.getElementById("searchField").focus();
+      }, 5);
 
       return;
     }
 
+    if (!isPathSavedMovies) localStorage.setItem(LS_SEARCH_QUERY, input);
+
     onSearchSubmit();
     setSearchQuery(input);
   }
+
+  useEffect(() => {
+    if (!isPathSavedMovies) {
+      const localSearchQuery = localStorage.getItem(LS_SEARCH_QUERY);
+      if (localSearchQuery) setInput(localSearchQuery);
+    }
+  }, []);
 
   return (
     <section className="search">
@@ -56,9 +74,7 @@ function SearchForm({
             autoFocus
             disabled={isLoading}
             value={input}
-            checked={isShorts}
             onChange={onChange}
-            ref={searchField}
           />
           <button
             type="submit"
@@ -90,7 +106,8 @@ function SearchForm({
             id="shorts"
             type="checkbox"
             className="search__checkbox"
-            onClick={toggleShortsFilter}
+            checked={isShorts}
+            onChange={onCheckboxToggle}
           />
           <label htmlFor="shorts"></label>
           <label htmlFor="shorts" className="search__label">
