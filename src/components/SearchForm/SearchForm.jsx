@@ -22,7 +22,7 @@ function SearchForm({
   const isPathSavedMovies = usePath(saved);
 
   function onChange(e) {
-    setInput(e.target.value.toLowerCase());
+    setInput(e.target.value);
   }
 
   function onCheckboxToggle() {
@@ -48,7 +48,7 @@ function SearchForm({
     if (!isPathSavedMovies) localStorage.setItem(LS_SEARCH_QUERY, input);
 
     onSearchSubmit();
-    setSearchQuery(input);
+    setSearchQuery(input.toLowerCase());
   }
 
   useEffect(() => {

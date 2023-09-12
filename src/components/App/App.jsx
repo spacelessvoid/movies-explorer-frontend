@@ -228,12 +228,12 @@ function App() {
   useEffect(() => {
     handleCheckToken();
 
-    const localAllMovies = localStorage.getItem(LS_ALL_MOVIES);
-    const localSavedMovies = localStorage.getItem(LS_SAVED_MOVIES);
+    const localAllMovies = JSON.parse(localStorage.getItem(LS_ALL_MOVIES));
+    const localSavedMovies = JSON.parse(localStorage.getItem(LS_SAVED_MOVIES));
 
     if (localAllMovies) {
-      setMoviesList(JSON.parse(localAllMovies));
-      setSavedMoviesList(JSON.parse(localSavedMovies));
+      setMoviesList(localAllMovies);
+      setSavedMoviesList(localSavedMovies);
     }
   }, []);
 

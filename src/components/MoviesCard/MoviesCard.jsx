@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./MoviesCard.css";
 import { API_3P_BASE_URL } from "../../utils/constants";
 
@@ -22,13 +22,9 @@ function MoviesCard({
     : "Добавить в избранное";
 
   function handleLikeButtonClick() {
-    if (!isSaved && !isPathSavedMovies)
-      Promise.resolve(handleSaveMovie(id)).then(() => setIsSaved(true));
+    if (!isSaved && !isPathSavedMovies) handleSaveMovie(id);
 
-    if (isSaved)
-      Promise.resolve(handleDeleteMovie(id ?? movieId)).then(() =>
-        setIsSaved(false),
-      );
+    if (isSaved) handleDeleteMovie(id ?? movieId);
   }
 
   function convertDuration(t) {
@@ -39,6 +35,10 @@ function MoviesCard({
 
     return duration;
   }
+
+  useEffect(() => {
+    setIsSaved(saved);
+  }, [saved]);
 
   return (
     <article className="card" data-saved={isSaved}>
