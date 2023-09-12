@@ -16,6 +16,14 @@ function sendRequest(endpoint, options) {
   return fetch(endpoint, options).then(checkResponseStatus);
 }
 
+// Rendered cards
+
+const CARDS_PER_PAGE_1280 = { initialCards: 12, additionalCards: 3 };
+const CARDS_PER_PAGE_768 = { initialCards: 8, additionalCards: 2 };
+const CARDS_PER_PAGE_320 = { initialCards: 5, additionalCards: 2 };
+
+const SHORT_DURATION = 40;
+
 // RegEx for form validation
 
 const NAME_REGEX = "[A-Za-zА-Яа-яЁё\\s\\-]+";
@@ -62,4 +70,8 @@ export {
   ERROR_INVALID_AUTH_DATA,
   ERROR_EMAIL_EXISTS,
   ERROR_INTERNAL_SERVER,
+  CARDS_PER_PAGE_1280,
+  CARDS_PER_PAGE_768,
+  CARDS_PER_PAGE_320,
+  SHORT_DURATION,
 };

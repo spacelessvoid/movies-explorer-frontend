@@ -1,4 +1,10 @@
 import { useState } from "react";
+import {
+  CARDS_PER_PAGE_1280,
+  CARDS_PER_PAGE_320,
+  CARDS_PER_PAGE_768,
+  SHORT_DURATION,
+} from "../utils/constants";
 
 function useMoviesFilter() {
   const [filteredMovieList, setFilteredMovieList] = useState([]);
@@ -16,21 +22,18 @@ function useMoviesFilter() {
   }
 
   function calcNumberOfCards(contentWidth) {
-    const cards = { initialCards: 0, additionalCards: 0 };
+    let cards = {};
 
     if (contentWidth > 1088) {
-      cards.initialCards = 12;
-      cards.additionalCards = 3;
+      cards = CARDS_PER_PAGE_1280;
     }
 
     if (1088 > contentWidth && contentWidth > 689) {
-      cards.initialCards = 8;
-      cards.additionalCards = 2;
+      cards = CARDS_PER_PAGE_768;
     }
 
     if (contentWidth <= 689) {
-      cards.initialCards = 5;
-      cards.additionalCards = 2;
+      cards = CARDS_PER_PAGE_320;
     }
 
     return cards;
@@ -53,7 +56,7 @@ function useMoviesFilter() {
     );
 
     if (isShorts) {
-      return filteredArray.filter(short => short.duration <= 40);
+      return filteredArray.filter(short => short.duration <= SHORT_DURATION);
     }
 
     return filteredArray;

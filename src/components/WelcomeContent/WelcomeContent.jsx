@@ -18,6 +18,8 @@ function WelcomeContent({
 }) {
   const { isLoading } = useContext(AppContext);
 
+  const isDisabled = isButtonDisabled === !isLoading;
+
   return (
     <main className="welcome">
       <section className="welcome__content">
@@ -39,10 +41,7 @@ function WelcomeContent({
           >
             {errorMessage}
           </p>
-          <DefaultFormButton
-            buttonText={buttonText}
-            isDisabled={isButtonDisabled}
-          />
+          <DefaultFormButton buttonText={buttonText} isDisabled={isDisabled} />
         </form>
 
         <p className="welcome__text">

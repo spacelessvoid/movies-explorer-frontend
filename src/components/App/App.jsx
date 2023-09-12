@@ -323,7 +323,10 @@ function App() {
               />
 
               <Route path="*" element={<Navigate to="/404" replace />} />
-              <Route path="/404" element={<PageNotFound />} />
+              <Route
+                path="/404"
+                element={<PageNotFound isLoggedIn={isLoggedIn} />}
+              />
             </Routes>
 
             {isFooterVisible && <Footer />}
