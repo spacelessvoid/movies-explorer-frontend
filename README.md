@@ -13,3 +13,7 @@ https://github.com/spacelessvoid/movies-explorer-frontend
 IP 84.201.140.152
 
 https://spacemovies.nomoreparties.co
+
+### Pull request
+
+https://github.com/spacelessvoid/movies-explorer-frontend/pull/26
