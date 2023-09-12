@@ -24,14 +24,20 @@ const EMAIL_REGEX = "^[a-zA-Z0-9+_.\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]{2,4}$";
 // Local storage variables
 
 const LS_SEARCH_QUERY = "storageSearchQuery",
-  LS_FILTERED_MOVIES = "storageFilteredMovies",
+  LS_ALL_MOVIES = "storageAllMovies",
+  LS_SAVED_MOVIES = "storageSavedMovies",
   LS_IS_SHORTS = "storageIsShorts";
 
 // Messages
 
-const MSG_PROFILE_UPDATE_SUCCESS = "Обновленные данные сохранены";
+const MSG_PROFILE_UPDATE_SUCCESS = "Обновленные данные сохранены",
+  MSG_EMPTY_SEARCH = "Введите название фильма",
+  MSG_NOTHING_FOUND = "Ничего не найдено",
+  MSG_SEARCH_ERROR =
+    "Во время запроса произошла ошибка.\r\nВозможно, проблема с соединением или сервер недоступен.\r\nПодождите немного и попробуйте ещё раз";
 
 // Errors
+
 const ERROR_INVALID_REG_DATA = "При регистрации пользователя произошла ошибка.",
   ERROR_INVALID_AUTH_DATA = "Вы ввели неправильный логин или пароль.",
   ERROR_EMAIL_EXISTS = "Пользователь с таким email уже существует.",
@@ -45,9 +51,13 @@ export {
   NAME_REGEX,
   EMAIL_REGEX,
   LS_SEARCH_QUERY,
-  LS_FILTERED_MOVIES,
+  LS_ALL_MOVIES,
+  LS_SAVED_MOVIES,
   LS_IS_SHORTS,
   MSG_PROFILE_UPDATE_SUCCESS,
+  MSG_EMPTY_SEARCH,
+  MSG_NOTHING_FOUND,
+  MSG_SEARCH_ERROR,
   ERROR_INVALID_REG_DATA,
   ERROR_INVALID_AUTH_DATA,
   ERROR_EMAIL_EXISTS,

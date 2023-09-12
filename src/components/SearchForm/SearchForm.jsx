@@ -1,7 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import "./SearchForm.css";
-import { LS_IS_SHORTS, LS_SEARCH_QUERY } from "../../utils/constants";
+import {
+  LS_IS_SHORTS,
+  LS_SEARCH_QUERY,
+  MSG_EMPTY_SEARCH,
+} from "../../utils/constants";
 import { saved } from "../../utils/paths";
 import usePath from "../../hooks/usePath";
 
@@ -16,8 +20,6 @@ function SearchForm({
   const { isLoading, isError, setIsError } = useContext(AppContext);
 
   const isPathSavedMovies = usePath(saved);
-
-  const errorText = "Введите название фильма"; //TODO Move all text strings to constants.js
 
   function onChange(e) {
     setInput(e.target.value.toLowerCase());
@@ -52,7 +54,10 @@ function SearchForm({
   useEffect(() => {
     if (!isPathSavedMovies) {
       const localSearchQuery = localStorage.getItem(LS_SEARCH_QUERY);
-      if (localSearchQuery) setInput(localSearchQuery);
+      if (localSearchQuery) {
+        setInput(localSearchQuery);
+        setSearchQuery(localSearchQuery);
+      }
     }
   }, []);
 
@@ -69,7 +74,7 @@ function SearchForm({
             id="searchField"
             type="text"
             className={`search__input ${isError && "search__input-error"}`}
-            placeholder={isError ? errorText : "Найти фильм"} //TODO
+            placeholder={isError ? MSG_EMPTY_SEARCH : "Найти фильм"}
             required
             autoFocus
             disabled={isLoading}

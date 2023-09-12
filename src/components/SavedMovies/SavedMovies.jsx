@@ -20,7 +20,6 @@ function SavedMovies({
     filterMovies,
   } = useMoviesFilter();
 
-  //TODO fix weird behavior
   useEffect(() => {
     if (!savedMoviesList.length) {
       handleGetSavedMovies();

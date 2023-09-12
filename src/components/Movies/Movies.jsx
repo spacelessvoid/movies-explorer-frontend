@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./Movies.css";
-import { LS_FILTERED_MOVIES, LS_IS_SHORTS } from "../../utils/constants";
+import { LS_IS_SHORTS } from "../../utils/constants";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import useMoviesFilter from "../../hooks/useMoviesFilter";
@@ -54,23 +54,6 @@ function Movies({
   }, [savedMoviesList, searchQuery, isShorts]);
 
   useEffect(() => {
-    if (
-      filteredMovieList.length !== moviesList.length &&
-      filteredMovieList.length !== 0
-    ) {
-      localStorage.setItem(
-        LS_FILTERED_MOVIES,
-        JSON.stringify(filteredMovieList),
-      );
-    }
-  }, [filteredMovieList]);
-
-  useEffect(() => {
-    const localFilteredMovies = localStorage.getItem(LS_FILTERED_MOVIES);
-    if (localFilteredMovies) {
-      setFilteredMovieList(JSON.parse(localFilteredMovies));
-    }
-
     const isShortsChecked = localStorage.getItem(LS_IS_SHORTS) === "true";
     setIsShorts(isShortsChecked);
   }, []);

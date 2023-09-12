@@ -11,7 +11,6 @@ function WelcomeInput({
   pattern = null,
   onChange,
   onBlur,
-  isValid,
 }) {
   return (
     <>
@@ -20,7 +19,6 @@ function WelcomeInput({
       </label>
       <input
         className="welcome__input"
-        data-valid={isValid}
         type={type}
         name={name}
         id={name}

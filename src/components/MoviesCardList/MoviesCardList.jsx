@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import "./MoviesCardList.css";
-import usePath from "../../hooks/usePath";
+import { MSG_NOTHING_FOUND, MSG_SEARCH_ERROR } from "../../utils/constants";
 import { saved } from "../../utils/paths";
+import usePath from "../../hooks/usePath";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
@@ -52,14 +53,11 @@ function MoviesCardList({
       {isLoading ? <Preloader /> : renderedCards}
 
       {renderedCards.length === 0 && searchQuery && !isError && !isLoading && (
-        <p className="movies__result-text">Ничего не найдено</p>
+        <p className="movies__result-text">{MSG_NOTHING_FOUND}</p>
       )}
 
       {!isPathSavedMovies && searchQuery && isError && (
-        <p className="movies__result-text">
-          Во время запроса произошла ошибка. Возможно, проблема с соединением
-          или сервер недоступен. Подождите немного и попробуйте ещё раз
-        </p>
+        <p className="movies__result-text">{MSG_SEARCH_ERROR}</p>
       )}
 
       {showMoreButton && (
