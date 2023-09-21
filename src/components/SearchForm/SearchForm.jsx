@@ -48,7 +48,7 @@ function SearchForm({
     if (!isPathSavedMovies) localStorage.setItem(LS_SEARCH_QUERY, input);
 
     onSearchSubmit();
-    setSearchQuery(input.toLowerCase());
+    setSearchQuery(input);
   }
 
   useEffect(() => {

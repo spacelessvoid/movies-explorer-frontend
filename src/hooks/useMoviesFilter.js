@@ -51,8 +51,8 @@ function useMoviesFilter() {
   function filterMovies(moviesArray) {
     const filteredArray = moviesArray.filter(
       movie =>
-        movie.nameRU.toLowerCase().includes(searchQuery) ||
-        movie.nameEN.toLowerCase().includes(searchQuery),
+        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase()),
     );
 
     if (isShorts) {

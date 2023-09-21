@@ -4,16 +4,30 @@
 
 В работе использовался макет [*dark-3*](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-8436&mode=dev)
 
-### Адрес репозитория
+### Описание функций проекта
 
-https://github.com/spacelessvoid/movies-explorer-frontend
+Это сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
 
-### Ссылки на проект
+Вот что было сделано:
+
+- настроена инфраструктура и создан сервер на express;
+- подключена база данных, созданы схемы и модели ресурсов API;
+- реализовано логирование, аутентификация и авторизация на сервере;
+- бэкенд задеплоен на VPS (Яндекс Облако);
+- свёрстаны компоненты на React, разметка портирована в его формат;
+- описана логика и вёрстка страниц регистрации, логина, редактирования профиля, сохранённых фильмов;
+- реализованы асинхронные GET- и POST-запросы к API;
+- проработаны авторизованные и неавторизованные состояния, сохранение фильмов в профиле;
+- полученные фильмы фильтруются на стороне клиента.
+
+**Инструменты и стек**: #HTML #CSS #React #Express #MongoDB #NodeJS #API #Nginx #JWT #Postman
+
+<!-- ### Ссылки на проект
 
 IP 84.201.140.152
 
-https://spacemovies.nomoreparties.co
+https://spacemovies.nomoreparties.co -->
 
-### Pull request
+### Адрес репозитория
 
-https://github.com/spacelessvoid/movies-explorer-frontend/pull/26
+https://github.com/spacelessvoid/movies-explorer-frontend
