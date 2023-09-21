@@ -1,12 +1,51 @@
+import { useEffect } from "react";
 import "./SavedMovies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import useMoviesFilter from "../../hooks/useMoviesFilter";
 
-function SavedMovies({ movies }) {
+function SavedMovies({
+  savedMoviesList,
+  handleGetSavedMovies,
+  handleDeleteMovie,
+}) {
+  const {
+    filteredMovieList,
+    setFilteredMovieList,
+    searchQuery,
+    setSearchQuery,
+    isShorts,
+    numberOfCards,
+    toggleShortsFilter,
+    filterMovies,
+  } = useMoviesFilter();
+
+  useEffect(() => {
+    if (!savedMoviesList.length) {
+      handleGetSavedMovies();
+    }
+  }, []);
+
+  useEffect(() => {
+    setFilteredMovieList(filterMovies(savedMoviesList));
+  }, [savedMoviesList, searchQuery, isShorts]);
+
   return (
     <main className="movies">
-      <SearchForm />
-      <MoviesCardList movies={movies} />
+      <SearchForm
+        onSearchSubmit={handleGetSavedMovies}
+        setSearchQuery={setSearchQuery}
+        toggleShortsFilter={toggleShortsFilter}
+        isShorts={isShorts}
+      />
+      <MoviesCardList
+        savedMoviesList={savedMoviesList}
+        filteredMovieList={filteredMovieList}
+        renderedMovies={filteredMovieList}
+        searchQuery={searchQuery}
+        numberOfCards={numberOfCards}
+        handleDeleteMovie={handleDeleteMovie}
+      />
     </main>
   );
 }

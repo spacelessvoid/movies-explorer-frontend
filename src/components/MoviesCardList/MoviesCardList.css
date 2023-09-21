@@ -5,7 +5,7 @@
 	padding-top: 80px;
 	border-top: #424242 1px solid;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	gap: 37px 24px;
 }
 
@@ -20,6 +20,14 @@
 	font-size: 12px;
 	font-weight: 500;
 	line-height: normal;
+}
+
+.movies__result-text {
+	grid-column: 1 / -1;
+	margin: 30px auto 0;
+	width: clamp(300px, 50%, 50%);
+	text-align: center;
+	font-style: italic;
 }
 
 @media screen and (max-width: 800px) {

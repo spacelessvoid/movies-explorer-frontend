@@ -1,8 +1,8 @@
 import "./DefaultFormButton.css";
 
-function DefaultFormButton({ buttonText, onClick }) {
+function DefaultFormButton({ buttonText, isDisabled = true }) {
   return (
-    <button className="button form-button" type="submit" onClick={onClick}>
+    <button className="button form-button" type="submit" disabled={isDisabled}>
       {buttonText}
     </button>
   );
